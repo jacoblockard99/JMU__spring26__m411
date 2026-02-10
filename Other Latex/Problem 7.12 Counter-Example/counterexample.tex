@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\textbf{Context from Theorem 7.1:} 
+\begin{quote}
+    \itshape
+    Suppose that $\{a_k\}_{k=1}^\infty$ is a sequence of monotonically
+    decreasing nonnegative numbers.
+\end{quote}
+\textbf{Problem 7.12(b):} 
+\begin{quote}
+    \itshape
+    Let $s_n$ be the $n$-th partial sum of $\sum a_k$ and
+    $t_m$ be the $m$-th partial sum of $\sum 2^{\ell} a_{2^\ell}$.
+    Use the inequality above to prove that $s_{2^{m+1}-1} \leq t_m$
+    for all $m \in \mathbb{N}$.
+\end{quote}
+
+\textbf{Counter-example: } Let $\{a_k\}_{k=1}^\infty$ be such that
+\begin{align*}
+    a_1 &= 3 \,, \\
+    a_2 &= 2 \,, \\
+    a_3 &= 1 \,,
+\end{align*}
+and $a_k = 0$ for all $k > 3$. Clearly, $\{a_k\}_{k=1}^\infty$ is
+monotonically decreasing, and all its terms are nonnegative.
+Let $m = 1 \in \mathbb{N}$. Then,
+\begin{align*}
+    s_{2^{m+1} - 1} = s_{2^2-1}
+    = s_3
+    = a_1 + a_2 + a_3
+    = 3 + 2 + 1
+    = 6 \,, \\
+    t_m
+    = t_1
+    = 2^1a_{2^1}
+    = 2a_2
+    = 4 \,,
+\end{align*}
+so $s_{2^{m+1} - 1} > t_m$ in this case.
+\qedsymbol
+
+\textbf{Proposition: } Perhaps the statement should read:
+\begin{quote}
+    \itshape
+    Let $s_n$ be the $n$-th partial sum of $\sum a_k$ and
+    $t_m$ be the $m$-th partial sum of $\sum_{\ell=0}^\infty 2^{\ell} a_{2^\ell}$.
+    Use the inequality above to prove that $s_{2^{m+1}-1} \leq t_m$
+    for all $m \in \mathbb{N}$.
+\end{quote}
+Maybe this was the original intention, but it seems odd for the
+one series to start at $1$ and the other to start at $0$.
+
+\end{document}

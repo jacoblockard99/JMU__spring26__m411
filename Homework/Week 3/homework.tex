@@ -1,0 +1,391 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 3}
+\author{Jacob Lockard}
+\date{10 February 2026}
+
+\maketitle
+
+\section*{Lemma 1}
+
+\begin{quote}
+    \itshape
+    Let $a_1, a_2, \dots, a_n \in \mathbb{R}$ be such that for all $i \in \{1, 2, \dots, n\}$
+    we have $0 \leq a_i < M$ for some $M \in \mathbb{R}^+$.
+    Then,
+    \begin{align*}
+        \prod_{i=1}^n a_i < M^n \,.
+    \end{align*}
+\end{quote}
+
+We proceed by induction. For all $n \in \mathbb{N}$, let $P_n$ be the statement that if
+$a_1, a_2, \dots, a_n \in \mathbb{R}$ and
+$0 \leq a_i < M$ for all
+$i \in \{1, 2, \dots, n\}$ for some $M \in \mathbb{R}^+$, then
+$\prod_{i=1}^n a_i < M^n$.
+
+If $a_1 \in \mathbb{R}$ and $0 \leq a_1 < M$ for some $M \in \mathbb{R}^+$, then
+we have:
+\begin{align*}
+    \prod_{i=1}^1 a_1 = a_1 < M = M^1 \,.
+\end{align*}
+So $P_1$ holds.
+
+Now assume that $P_n$ holds for some $n \in \mathbb{N}$.
+Let $a_1, a_2, \dots, a_n, a_{n+1} \in \mathbb{R}$ with $0 \leq a_i < M$
+for all $i \in \{1, 2, \dots, n, n+1\}$ for some $M \in \mathbb{R}^+$.
+If $a_{n+1} = 0$, then since $M$ is positive,
+\begin{align*}
+    \prod_{i=1}^{n+1} a_i = (a_{n+1})\prod_{i=1}^n a_i = 0 < M^{n+1} \,.
+\end{align*}
+On the other hand, if $a_{n+1} > 0$, we have:
+\begin{align*}
+    \prod_{i=1}^n a_i &< M^n \\
+    (a_{n+1})\prod_{i=1}^n a_i &< (a_{n+1})M^n \\
+    \prod_{i=1}^{n+1} a_i &< (a_{n+1})M^n \,.
+\end{align*}
+Since $a_{n+1} < M$ and $M^n > 0$, it follows that
+$(a_{n+1})M^n < M \cdot M^n = M^{n+1}$. We conclude that
+\begin{align*}
+    \prod_{i=1}^{n+1} a_i &< M^{n+1} \,.
+\end{align*}
+We've shown that $P_n$ implies $P_{n+1}$. So $P_n$ holds for all
+natural $n$ by induction.
+
+\qedsymbol
+
+\section*{Lemma 2}
+
+\begin{quote}
+    \itshape
+    Let $\{a_n\}$ be a monotonic sequence.
+    If $\{a_n\}$ is increasing, then $\{a_n\} \to \infty$
+    if and only if $\{a_n\}$ is not bounded above.
+    Likewise, if $\{a_n\}$ is decreasing, then $\{a_n\} \to -\infty$
+    if and only if $\{a_n\}$ is not bounded below.
+\end{quote}
+
+Clearly, if $\{a_n\} \to \infty$, then $\{a_n\}$ is not bounded above,
+and if $\{a_n\} \to -\infty$, then $\{a_n\}$ is not bounded below.
+
+Suppose $\{a_n\}$ is increasing and not bounded above.
+Then, for any $M > 0$, there's a natural $N$ such that $a_N > M$.
+Since $\{a_n\}$ is increasing, if $n > N$, then we still have $a_n > M$.
+So $\{a_n\} \to \infty$.
+
+Now suppose $\{a_n\}$ is decreasing and not bounded below.
+Then, for any $M < 0$, there's a natural $N$ such that $a_N < M$.
+Since $\{a_n\}$ is decreasing, if $n > N$, then we still have $a_n < M$.
+So $\{a_n\} \to -\infty$.
+
+\qedsymbol
+
+\section*{Lemma 3}
+
+\begin{quote}
+    \itshape
+    Let $\sum a_n$ be a series with sequence of partial sums $\{s_n\}$.
+    If $a_n \geq 0$ for all natural $n$, then $\{s_n\} \to \infty$
+    if and only if $\sum a_n$ diverges.
+    Likewise, if $a_n \leq 0$ for all natural $n$, then $\{s_n\} \to -\infty$
+    if and only if $\sum a_n$ diverges.
+\end{quote}
+
+If $a_n \geq 0$ for all natural $n$, then $\{s_n\}$ is clearly monotonically
+increasing. The proof of Problem 5.23 ensures that $\{s_n\}$ is not bounded above
+if and only if $\sum a_n$ diverges.
+
+If $a_n \leq 0$ for all natural $n$, then $\{s_n\}$ is clearly monotonically
+decreasing. The proof of Problem 5.23 ensures that $\{s_n\}$ is not bounded below
+if and only if $\sum a_n$ diverges.
+
+Lemma 2 finishes the proof.
+
+\qedsymbol
+
+\section*{Problem 7.21}
+
+\begin{quote}
+    \itshape
+    For the series $\sum a_n$, suppose that there exists a real number
+    $\beta$ with $0 < \beta < 1$ and an $N \in \mathbb{N}$ such that for all
+    $n \geq N$ we have $\sqrt[n]{|a_n|} \leq \beta$. Prove that
+    $\sum a_n$ converges absolutely.
+\end{quote}
+
+Let $\sum_{n=1}^\infty a_n$ be a series, let $\beta \in (0, 1)$, and let $N \in \mathbb{N}$,
+with $\sqrt[n]{|a_n|} \leq \beta$ for all $n \geq N$. We'll show that
+$\sum_{n=1}^\infty a_n$ converges absolutely.
+
+For all $n \in \mathbb{N}$, since $|a_n|$ is nonnegative, we notice that
+\begin{align*}
+    \sqrt[n]{|a_n|} &\leq \beta \\
+    |a_n| &\leq \beta^n \,.
+\end{align*}
+Since $\beta \in (0,1)$, Problem 7.11 ensures the series $\sum_{n=1}^\infty \beta^n$
+converges. So Problem 7.7 ensures $\sum_{n=1}^\infty |a_n|$ converges,
+since for all $n \in \mathbb{N}$ we certainly have
+$\bigl| |a_n| \bigr| = |a_n| \leq \beta^n$. So $\sum_{n=1}^\infty a_n$
+converges absolutely.
+
+\qedsymbol
+
+\section*{Problem 7.22}
+
+\begin{quote}
+    \itshape
+    For the series $\sum a_n$, suppose that there exists a real number
+    $\beta$ with $0 < \beta < 1$ and an $N \in \mathbb{N}$ such that for
+    all $n \geq N$ we have $\Bigl| \frac{a_{n+1}}{a_n} \Bigr| < \beta$.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that for all $n \geq N$ we have
+        \begin{align*}
+            \Biggl| \frac{a_n}{a_N} \Biggr| \, \beta^N < \beta^n \,.
+        \end{align*}
+        \item Use the result above to prove that $\sum a_n$ converges
+        absolutely.
+    \end{enumerate}
+\end{quote}
+
+Let $\sum_{n=1}^\infty a_n$ be a series, let $\beta \in (0,1)$, and let
+$N \in \mathbb{N}$, with $\Bigl| \frac{a_{n+1}}{a_n} \Bigr| < \beta$
+for all $n \geq N$.
+
+\textbf{(a)} Let $n \in \mathbb{N}$ with $n \geq N$. We'll show that
+\begin{align*}
+    \Biggl| \frac{a_n}{a_N} \Biggr| \, \beta^N < \beta^n \,.
+\end{align*}
+We have:
+\begin{align*}
+    \Biggl| \frac{a_n}{a_N} \Biggr|
+    = \Biggl| \prod_{i=N}^{n-1} \frac{a_{i+1}}{a_i} \Biggl|
+    = \prod_{i=N}^{n-1} \Bigl| \frac{a_{i+1}}{a_i} \Bigr|
+    < \prod_{i=N}^{n-1} \beta = \beta^{n-N}
+    \,.
+\end{align*}
+where the first statement can be easily proven by induction,
+the second uses a well known fact about the absolute value of a product, and
+the third is justified by Lemma 1 above,
+since for each $i$ we have $0 \leq \Bigl| \frac{a_{i+1}}{a_i} \Bigr| < \beta$, and $\beta > 0$.
+
+Since $\beta^N > 0$, we conclude that
+\begin{align*}
+    \Biggl| \frac{a_n}{a_N} \Biggr| \, \beta^N < \beta^{n-N} \beta^{N}
+    = \beta^n \,.
+\end{align*}
+
+\textbf{(b)} We will show that $\sum_{n=1}^\infty a_n$ converges absolutely.
+
+We observe that by part (a), for all $n \geq N$, since $\beta^N > 0$,
+\begin{align*}
+    \sqrt[n]{\Bigl| \frac{a_n}{a_N}\beta^N \Bigr|} < \beta \,.
+\end{align*}
+So Problem 7.21 ensures the series $\sum_{n=1}^\infty \Bigl| \frac{a_n}{a_N} \beta^N \Bigr|$
+converges. A simple consequence of Problem 7.20 is that
+if a series converges, the series formed by multiplying each of its term by 
+a constant also converges. Hence, since $\beta > 0$, we can say that
+\begin{align*}
+    \sum_{n=1}^\infty \Bigl| \frac{a^N}{\beta^N} \Bigr| \Bigl| \frac{a_n}{a_N} \beta^N \Bigr| = \sum_{n=1}^\infty |a_n|
+\end{align*}
+converges. So $\sum_{n=1}^\infty a_n$ converges absolutely.
+
+\qedsymbol
+
+\section*{Problem 7.23}
+
+\begin{quote}
+    \itshape
+    Use the comparison test to prove that $\sum a_n$ converges absolutely
+    if and only if both $\sum a_n^+$ and $\sum a_n^-$ converge absolutely.
+\end{quote}
+
+Let $\sum a_n$ be a series. We'll show that $\sum a_n$ converges
+absolutely if and only if both $\sum a_n^+$ and $\sum a_n^-$ converge
+absolutely.
+
+Assume $\sum a_n$ converges absolutely. We observe that for any natural $n$,
+\begin{align*}
+    |a_n^+| \leq |a_n| \,,
+\end{align*}
+because if $a_n \geq 0$, then $|a_n^+| = |a_n|$, and if $a_n < 0$,
+then $|a_n| > 0 = |0| = |a_n^+|$. Likewise, we have
+\begin{align*}
+    |a_n^-| \leq |a_n| \,,
+\end{align*}
+because if $a_n \geq 0$, then $|a_n| \geq 0 = |0| = |a_n^-|$, and if
+$a_n < 0$, then $|a_n^-| = |a_n|$. The comparison test
+ensures that both $\sum a_n^+$ and $\sum a_n^-$ converge absolutely.
+
+Now assume $\sum a_n^+$ and $\sum a_n^-$ converge absolutely.
+We note that, by construction, for any natural $n$,
+\begin{align*}
+    |a_n| = |a_n^+ + a_n^-| \leq |a_n^+| + |a_n^-| \,.
+\end{align*}
+Since $\sum a_n^+$ and $\sum a_n^-$ converge absolutely,
+$\sum\bigl(|a_n^+| + |a_n^-|\bigr)$ converges.
+The comparison test ensures $\sum a_n$ converges absolutely.
+
+\qedsymbol
+
+\section*{Problem 7.24}
+
+\begin{quote}
+    \itshape
+    Prove that if $\sum a_n$ converges conditionally then $\sum a_n^+$
+    must go off to $\infty$ and $\sum a_n^-$ must go off to $-\infty$.
+\end{quote}
+
+Let $\sum a_n$ be a series that converges conditionally to $L$. We'll show that
+the sequence of partial sums $\{s_n\}$ of $\sum a_n^+$ converges to $\infty$ and
+the sequence of partial sums $\{t_n\}$ of $\sum a_n^-$ converges to $-\infty$.
+
+We first note that, for any natural $n$,
+\begin{align*}
+    \sum_{k=1}^n a_k = \sum_{k=1}^n (a_k^+ + a_k^-)
+    = \sum_{k=1}^n a_k^+ + \sum_{k=1}^n a_k^- = s_n + t_n \,.
+\end{align*}
+
+Let $\epsilon > 0$. Then there's an $N_1$ such that if $n \geq N_1$, then
+$|s_n + t_n - L| < \epsilon$.
+Let $M < 0$, and suppose $\{s_n\}$ is not bounded above. Then there's an $N_2$ such that
+if $n \geq N_2$, then $s_n > -M + \epsilon + L$. Let $n = \max\{N_1, N_2\}$.
+Then we have
+\begin{align*}
+    s_n &> -M + \epsilon + L \\
+    s_n - L +M &> \epsilon \,. \\
+    s_n - L + M &> s_n + t_n - L\\
+    M &> t_n \,.
+\end{align*}
+So $\{t_n\}$ is not bounded below.
+On the other hand, let $M > 0$, and suppose $\{t_n\}$ is not bounded below.
+Then there's an $N_2$ such that if $n \geq N_2$, then $t_s < -M + \epsilon + L$.
+Let $n = \max{N_1, N_2}$. Then we have
+\begin{align*}
+    t_n &< -M + \epsilon + L \\
+    t_n - L M &< \epsilon \,. \\
+    t_n - L + M &< s_n + t_n - L\\
+    M &< s_n \,.
+\end{align*}
+So $\{s_n\}$ is not bounded above.
+
+Now we observe that $\sum a_n^+$ and $\sum a_n^-$ each converge
+if and only if they converge absolutely. The case of $\sum a_n^+$
+is trivial, since $|a_n^+| = a_n^+$ for all $n$.
+In the case of $\sum a_n^-$, we note that $|a_n^-| = -a_n^-$ for all $n$.
+Problem 7.20 ensures that if $\sum a_n^-$ converges, then so does
+$\sum -a_n^- = \sum |a_n^-|$.
+Problem 7.23 ensures that at least one of $\sum a_n^+$ and $\sum a_n^-$
+does not converge absolutely. So one of them must diverge.
+
+If $\sum a_n^+$ diverges, then Lemma 3 ensures $\{s_n\}$ converges
+to $\infty$, which as we just noted implies $\{t_n\}$ is
+not bounded below, which by Lemma 2 means $\{t_n\}$ converges to $-\infty$.
+Likewise, if $\sum a_n^-$ diverges, then Lemma 3 ensures $\{t_n\}$
+converges to $-\infty$, which as we just noted implies $\{s_n\}$ is not
+bounded above, which by Lemma 2 means $\{s_n\}$ converges
+to $\infty$. In either case, $\{s_n\} \to \infty$ and $\{t_n\} \to -\infty$.
+
+\qedsymbol
+
+\section*{Problem 7.25}
+
+\begin{quote}
+    \itshape
+    Let $\sum a_n$ be a conditionally convergent series.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that for any $n \in \mathbb{N}$ and any $M > 0$,
+        there exists a $q > n$ such that
+        \begin{align*}
+            \sum_{k=n}^q a_n^+ > M \,.
+        \end{align*}
+        \item Prove that for any $M > 0$ and $\epsilon > 0$, that there
+        exists an $N \in \mathbb{N}$ such that for any $n \geq N$ there
+        exists a $q > n$ with
+        \begin{align*}
+            M < \sum_{k=n}^q a_n^+ < M + \epsilon \,.
+        \end{align*}
+    \end{enumerate}
+\end{quote}
+
+Let $\sum a_n$ be a conditionally convergent series.
+Let $s_n$ denote the $n$-th partial sum of
+$\sum a_n^+$.
+
+\textbf{(a)}
+Let $n \in \mathbb{N}$ and $M > 0$. We will show there
+exists a $q > n$ such that
+\begin{align*}
+    s_q - s_{n-1} = \sum_{k=n}^q a_k^+ > M \,.
+\end{align*}
+
+Problem 7.24 ensures that the sequence of partial sums of $\sum a_n^+$
+converges to $\infty$. So there is a $q \in \mathbb{N}$ such that
+$s_q > M + s_{n-1}$. We have:
+\begin{align*}
+    s_q - s_{n-1} > M + s_{n-1} - s_{n-1} = M \,.
+\end{align*}
+
+\textbf{(b)} Let $M > 0$ and $\epsilon > 0$. We will show that there exists
+an $N \in \mathbb{N}$ such that for any $n \geq N$ there exists a $q > n$
+with
+\begin{align*}
+    M < \sum_{k=n}^q a_n^+ < M + \epsilon \,.
+\end{align*}
+
+Let $\{p_{n_k}\}$ be the subsequence of $\{a_n\}$ whose terms are positive.
+Since $\sum a_n$ converges, Problem 7.5 and Problem 5.15 ensure that
+$\{p_{n_k}\} \to 0$. We note that every term in $\{a_n^+\}$ is either
+a term of $\{p_{n_k}\}$ or is equal to $0$. Since every neighborhood
+around $0$ contains all but finitely many terms of $\{p_{n_k}\}$
+and certainly contains $0$, we conclude that $\{a_n^+\} \to 0$.
+
+Let $n \in \mathbb{N}$ be such that if $p \geq n$, then we have
+\begin{align*}
+    a_{p}^+ = |a_{p}^+ - 0| < \min \{\epsilon, M \} \,,
+\end{align*}
+which exists because $\epsilon$ and $M$ are positive.
+Let $Q > n$ be such that
+\begin{align*}
+    \sum_{k=n}^{Q} a_k^+ > M \,,
+\end{align*}
+as guaranteed by part (a). Let $m$ be the largest element
+of $\{n, n+1, \dots, Q\}$ that satisfies
+\begin{align*}
+    \sum_{k=n}^m a_k^+ \leq M \,.
+\end{align*}
+$m$ exists, since $a_n^+ < M$. We know that
+\begin{align*}
+    \sum_{k=n}^{m+1} a_k^+ > M \,,
+\end{align*}
+since $m \neq Q$ and thus $m+1 \in \{n, n+1, \dots, Q\}$, but $m + 1 > m$.
+We also have:
+\begin{align*}
+    \sum_{k=n}^m a_k^+ &\leq M \\
+    \sum_{k=n}^m a_k^+ + a_{m+1}^+ &\leq M + a_{m+1}^+ \\
+    \sum_{k=n}^{m+1} a_k^+ &\leq M + a_{m+1}^+ \,.
+\end{align*}
+Further, $a_{m+1}^+ < \epsilon$, since $m + 1 > m \geq n$. So we have:
+\begin{align*}
+    \sum_{k=n}^{m+1} a_k^+ &\leq M + a_{m+1}^+ < M + \epsilon\,.
+\end{align*}
+So $q = m+1$ has the desired properties.
+
+\qedsymbol

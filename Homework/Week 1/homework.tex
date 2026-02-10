@@ -1,0 +1,244 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 1}
+\author{Jacob Lockard}
+\date{23 January 2026}
+
+\maketitle
+
+\section*{Definition}
+
+Let $A \subseteq [-\infty, \infty]$. If $\infty \in A$, we define
+$\lub A = \infty$. If $A = \{-\infty\}$, we define $\lub A = -\infty$.
+Otherwise, we define $\lub A = \lub \bigl(A \setminus \{-\infty\}\bigr)$.
+
+\section*{Problem 7.2}
+
+\begin{quote}
+    \itshape
+    Let $\{a_n\}$ be a sequence of real numbers and let $E$ be its set of
+    subsequential limits. Prove that $\limsup_{n \to \infty} a_n \in E$.
+\end{quote}
+
+Let $\{a_n\}$ be a sequence of real numbers and let $E \subseteq [-\infty, \infty]$ be its set of
+subsequential limits. We will show that
+$\limsup_{n \to \infty} a_n = \lub E \in E$.
+
+Our definition ensures that if $\infty \notin E$, then $\lub E = -\infty$
+or $\lub E \in \mathbb{R}$. So if $\lub E = \infty$, then $\infty \in E$.
+If $E = \{-\infty\}$, our definition ensures $\lub E = -\infty \in E$.
+
+If $\infty \notin E$ and $E \neq \{-\infty\}$, our definition
+ensures that $\lub E = \lub A$, where $A$ is the set of accumulation points of
+$\{a_n\}$. Since $\infty \notin E$, there is no subsequence of $\{a_n\}$ that
+converges to $\infty$, so $\{a_n\}$ and thus $A$ is bounded above.
+Problem 5.18 ensures $A$ is closed. Problem 4.9 then ensures
+$\lub E = \lub A \in A \subseteq E$.
+\qedsymbol
+
+\section*{Problem 7.3}
+
+\begin{quote}
+    \itshape
+    Let $\{a_n\}$ be a sequence of real numbers. If $\limsup_{n \to \infty} \in \mathbb{R}$,
+    and $x > \limsup_{n \to \infty} a_n \in \mathbb{R}$, prove that there exists
+    a natural number $N$ such that for all $n \geq N$ we have $a_n < x$.
+\end{quote}
+
+Let $\{a_n\}$ be a sequence of real numbers with $\alpha = \limsup_{n \to \infty} \in \mathbb{R}$,
+and let $x > \alpha \in \mathbb{R}$.
+We will show that there exists a natural number $N$ such that for all $n \geq N$ we have $a_n < x$.
+Note that since $\limsup_{n\to\infty} \in \mathbb{R}$, there is no subsequence
+of $\{a_n\}$ that converges to $\infty$, so $\{a_n\}$ is bounded.
+
+Since $\alpha \in \mathbb{R}$, it is the least upper bound of the set of
+accumulation points of $\{a_n\}$.
+Since $\{a_n\}$ is bounded above, there exists some $M \in \mathbb{R}$ such that
+$a_n \leq M$ for all $n$.
+If $M < x$, then $a_n < x$ for all $n \geq 1$ and we're done.
+So we assume $M \geq x$.
+
+Problem 5.17 ensures that if there exists a subsequence of $\{a_n\}$ with terms
+in $[x, M]$, then that subsequence---and thus $\{a_n\}$ itself---has an accumulation
+point in $[x, M]$. But since $\alpha$ is an upper bound on the set of accumulation
+points of $\{a_n\}$ and $x > \alpha$, we know that $[x, M]$ has no accumulation
+points of $\{a_n\}$. We conclude that there is no subsequence of $\{a_n\}$ with
+terms from $[x, M]$.
+Further, since by definition there are no terms of $\{a_n\}$ greater than
+$M$, we know that there is no subsequence of $\{a_n\}$ with terms from
+$[x, \infty)$. So there are only finitely many
+terms of $\{a_n\}$ greater than or equal to $x$.
+\qedsymbol
+
+\section*{Problem 7.5}
+
+\begin{quote}
+    \itshape
+    If $\sum a_k$ converges then $\lim_{k \to \infty} a_k = 0$.
+\end{quote}
+
+Let $\sum a_k$ be a convergent series. We will show that $\lim_{k \to \infty} a_k = 0$.
+
+Let $\epsilon > 0$. Problem 7.4 ensures that there is a natural $N$ such
+that for all $m \geq n > N$, we have
+\begin{align*}
+    \Biggl| \sum_{k=n}^m a_k \Biggr| < \epsilon \,.
+\end{align*}
+If $m = n$, then
+\begin{align*}
+    \Biggl| \sum_{k=n}^n a_k \Biggr| < \epsilon &\\
+    |a_n| < \epsilon &\\
+    -\epsilon < a_n < \epsilon &\\
+    0-\epsilon < a_n < 0+\epsilon &\\
+    a_n \in (0-\epsilon, 0+\epsilon) &\,.
+\end{align*}
+So we've shown that for all $\epsilon > 0$, there's a natural number $N + 1$
+such that if $n \geq N+1 > N$, we have $a_n \in (0-\epsilon, 0+\epsilon)$.
+We conclude that $\lim_{k\to\infty} a_k = 0$.
+\qedsymbol
+
+\section*{Problem 7.6}
+
+\begin{quote}
+    \itshape
+    If the series $\sum |a_k|$ converges then the series $\sum a_k$ converges as well.
+\end{quote}
+
+Let $\sum a_k$ be a series such that $\sum |a_k|$ converges. We will show that
+$\sum a_k$ also converges.
+
+Since $\sum |a_k|$ converges, Problem 7.4 ensures that there is a natural $N$
+such that for all $m \geq n > N$, we have
+\begin{align*}
+    \Biggl| \sum_{k=n}^m |a_k| \Biggr| &< \epsilon
+\end{align*}
+Applying the triangle inequality, we get:
+\begin{align*}
+    \epsilon > \Biggl| \sum_{k=n}^m |a_k| \Biggr| \geq \Biggl|\Biggl| \sum_{k=n}^m a_k \Biggr|\Biggr| = \Biggl| \sum_{k=n}^m a_k \Biggr| \,.
+\end{align*}
+Problem 7.4 then ensures that $\sum a_k$ converges.
+\qedsymbol
+
+\section*{Problem 7.7}
+
+\begin{quote}
+    \itshape
+    If $|a_k| \leq c_k$ for all $k \geq N_0$ where $N_0$ is a fixed integer, and
+    $\sum c_k$ converges, then $\sum a_k$ converges as well.
+\end{quote}
+
+Let $N_0 \in \mathbb{N}$.
+Let $\sum a_k$ be a series and $\sum c_k$ be a convergent series,
+with $|a_k| \leq c_k$ for all $k \geq N_0$. We will show that $\sum a_k$
+is also convergent.
+
+Let $\epsilon > 0$. Since $\sum c_k$ converges, Problem 7.4 ensures that there
+exists an $N \in \mathbb{N}$ such that for all $m \geq n > N$, we have
+\begin{align*}
+    \Biggl| \sum_{k=n}^m c_k \Biggr| < \epsilon \,.
+\end{align*}
+Let $M = \max \{N_0, N\}$. Then if $m \geq n > M$, since $0 \leq |a_k| \leq c_k$
+for all $k \geq N_0$, we have:
+\begin{align*}
+    \sum_{k=n}^m |a_k| &\leq \sum_{k=n}^m c_k \\
+    \Biggl| \sum_{k=n}^m |a_k| \Biggr| &\leq \Biggl| \sum_{k=n}^m c_k \Biggr| < \epsilon \,.
+\end{align*}
+Since for every $\epsilon > 0$ there exists an $M \in \mathbb{N}$ such that
+for every $m \geq n > M$ we have $\Bigl|\sum_{k=n}^m |a_k|\Bigr| < \epsilon$,
+Problem 7.4 ensures $\sum |a_k|$ converges. Problem 7.6 then ensures
+$\sum a_k$ converges.
+\qedsymbol
+
+\section*{Problem 7.8}
+
+\begin{quote}
+    \itshape
+    If $a_k \geq d_k \geq 0$ for all $k \geq N_0$ where $N_0$ is a fixed integer, and
+    $\sum d_k$ diverges, then $\sum a_k$ diverges as well.
+\end{quote}
+
+Let $N_0 \in \mathbb{N}$. Let $\sum a_k$ be a series
+and $\sum d_k$ be a divergent series, with $a_k \geq d_k \geq 0$ for all
+$k \geq N_0$. We will show that $\sum a_k$ is also divergent.
+
+Since $d_k \geq 0$, we know that $d_k = |d_k|$ and so
+$|d_k| \leq a_k$ for all $k \geq N_0$.
+If $\sum a_k$ converges, then Problem 7.7 ensures $\sum d_k$ converges.
+Since $\sum d_k$ does not converge, we conclude that $\sum a_k$
+does not converge.
+\qedsymbol
+
+\section*{Problem 7.9}
+
+\begin{quote}
+    \itshape
+    Suppose that $a_k \geq 0$ for all $k$. Then the series $\sum a_k$
+    converges if and only if the seqeunce of partial sums is bounded.
+\end{quote}
+
+Let $\sum a_k$ be a series with $a_k \geq 0$ for all $k$.
+We will show that $\sum a_k$ converges if and only if its seqeunce of
+partial sums $\{s_k\}$ is bounded.
+
+Let $n \in \mathbb{N}$. Then:
+\begin{align*}
+    s_{n+1} = \sum_{k=1}^{n+1} a_k = \sum_{k=1}^n a_k + a_{n+1} = s_n + a_{n+1} \geq s_n \,,
+\end{align*}
+since $a_{n+1} \geq 0$. So $\{s_k\}$ is monotonically increasing.
+Problem 5.23 then ensures $\{s_k\}$ converges if and only if it is bounded.
+\qedsymbol
+
+\section*{Problem 7.10}
+
+\begin{quote}
+    \itshape
+    Let $r \in \mathbb{R}$ be fixed. Use mathematical induction to prove that for
+    all $n \in \mathbb{N}$ we have
+    \begin{align*}
+        (1-r)(1+r+r^2+\dots+r^n) = 1 - r^{n+1} \,.
+    \end{align*}
+\end{quote}
+
+Let $r \in \mathbb{R}$. For all $n \in \mathbb{N}$, let $P_n$ be
+the statement that
+\begin{align*}
+    (1-r)(1+r+r^2+\dots+r^n) = 1 - r^{n+1} \,.
+\end{align*}
+We will show by induction that $P_n$ holds for all natural $n$.
+$P_1$ holds:
+\begin{align*}
+    (1-r)(1+r^1) = (1-r)(1+r) = 1 - r^2 = 1 - r^{1+1} \,.
+\end{align*}
+Now assume that $P_n$ holds for some $n \in \mathbb{N}$, such that
+\begin{align*}
+    (1-r)(1+r+r^2+\dots+r^n) = 1 - r^{n+1} \,.
+\end{align*}
+Then:
+\begin{align*}
+    (1-r&)(1+r+r^2+\dots+r^n+r^{n+1}) \\
+    &= (1-r)(1+r+r^2+\dots+r^{n}) + (1-r)r^{n+1} \\
+    &= 1 - r^{n+1} + (1-r)r^{n+1} \\
+    &= 1 - r^{n+1} + r^{n+1} - r\cdot r^{n+1} \\
+    &= 1 - r\cdot r^{n+1} \\
+    &= 1 - r^{(n+1)+1} \,.
+\end{align*}
+We've shown that $P_n$ implies $P_{n+1}$. By induction we conclude that
+$P_n$ holds for all natural $n$.
+\qedsymbol
+
+\end{document}

@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 2}
+\author{Jacob Lockard}
+\date{5 February 2026}
+
+\maketitle
+
+\section*{Lemma}
+
+\begin{quote}
+    \itshape
+    Let $\sum_{k=k_0}^\infty a_k$ be a series. Let $c$ be a nonzero real number.
+    Then $\sum_{k=k_0}^\infty a_k$ converges if and only if $\sum_{k=k_0}^\infty c a_k$
+    converges.
+\end{quote}
+
+Let $\{s_n\}$ and $\{t_n\}$ be the sequences of partial sums of $\sum a_k$
+and $\sum ca_k$, respectively.
+By Problem 5.11, if $\{s_n\}$ converges, then $\{cs_n\}_{n = k_0}^\infty$ converges.
+On the other hand, if $\{cs_n\}_{n=k_0}^\infty$ converges, then since $c \neq 0$,
+Problem 5.11 ensures that $\{\frac{1}{c} c s_n\} = \{s_n\}$ converges.
+So we've shown that $\{s_n\}$ converges if and only if $\{cs_n\}$
+converges.
+
+We observe that, for all $n \geq k_0$,
+\begin{align*}
+    c s_n = c \sum_{k=k_0}^n a_k = \sum_{k=k_0}^n ca_k = t_n \,.
+\end{align*}
+We conclude that $\{s_n\}$ converges if and only if $\{t_n\}$ converges, and hence
+that $\sum a_k$ converges if and only if $\sum ca_k$
+converges.
+\qedsymbol
+
+\section*{Problem 7.15}
+
+\begin{quote}
+    \itshape
+    Use Theorem 7.1 to prove that the series $\sum_{n=1}^\infty \frac{1}{n^p}$
+    converges if and only if $p > 1$.
+\end{quote}
+
+Let $p \in \mathbb{R}$. We will show that the series $\sum_{n=1}^\infty \frac{1}{n^p}$
+converges if and only if $p > 1$. Problem 7.1 ensures that
+$\sum_{n=1}^\infty \frac{1}{n^p}$ converges if and only if
+\begin{align*}
+    \sum_{n = 0}^\infty 2^n \frac{1}{(2^n)^p}
+    = \sum_{n = 0}^\infty \frac{1}{(2^n)^{p-1}}
+    = \sum_{n = 0}^\infty \frac{1}{(2^{p-1})^{n}}
+    = \sum_{n = 0}^\infty \Bigl(\frac{1}{2^{p-1}}\Bigr)^n
+\end{align*}
+converges. By Problem 7.11, this series converges if and only if
+\begin{gather*}
+    \Bigl| \frac{1}{2^{p-1}} \Bigr| < 1 \\
+    \bigl|2^{p-1}\bigr| > 1 \\
+    p-1 > 0 \\
+    p > 1 \,.
+\end{gather*}
+
+\qedsymbol
+
+\section*{Problem 7.16}
+
+\begin{quote}
+    \itshape
+    Use Theorem 7.1 to prove that the series
+    $\sum_{n=1}^\infty \frac{1}{n (\ln n)^p}$ converges if and only if
+    $p > 1$.
+\end{quote}
+
+Let $p \in \mathbb{R}$. We will show that the series
+$\sum_{n=1}^\infty \frac{1}{n (\ln n)^p}$ converges if and only if
+$p > 1$. Problem 7.1 ensures that $\sum_{n=1}^\infty \frac{1}{n^p}$ converges
+if and only if
+\begin{align*}
+    \sum_{n=0}^\infty 2^n \frac{1}{2^n (\ln 2^n)^p}
+    &= \sum_{n=0}^\infty \frac{1}{(\ln 2^n)^p} \\
+    &= \sum_{n=0}^\infty \frac{1}{(n \ln 2)^p} \\
+    &= \sum_{n=0}^\infty \frac{1}{n^p (\ln 2)^p} \\
+    &= \sum_{n=0}^\infty \Biggl( \frac{1}{(\ln 2)^p} \cdot \frac{1}{n^p} \Biggr)
+\end{align*}
+converges. By our lemma above and Problem 7.15,
+this series converges if and only if $p > 1$, since
+$\frac{1}{(\ln 2)^p} \neq 0$.
+
+\qedsymbol
+
+\section*{Problem 7.17}
+
+\begin{quote}
+    \itshape
+    For a series $\sum a_n$ suppose that there exists some $M > 0$
+    such that for each partial sum $s_n$ we have $|s_n| < M$. Prove that
+    for any $0 < p < q$ we have
+    \begin{align*}
+        \Biggl| \sum_{k=p}^q a_k \Biggr| < 2M \,.
+    \end{align*}
+\end{quote}
+
+Let $M > 0$, and let $\sum a_n$ be a series such that for each partial sum
+$s_n$ we have $|s_n| < M$. Let $0 < p < q$. We'll show that
+\begin{align*}
+    \Biggl| \sum_{k=p}^q a_k \Biggr| < 2M \,.
+\end{align*}
+We have:
+\begin{align*}
+    \Biggl| \sum_{k=p}^q a_k \Biggr| &= \Biggl| \sum_{k=1}^q a_k - \sum_{k=1}^p a_k \Biggr| \\
+    &= |s_q + (- s_p)| \\
+    &< |s_q| + |-s_p| \\
+    &= |s_q| + |s_p| \\
+    &< M + M \\
+    &< 2M \,.
+\end{align*}
+\qedsymbol
+
+
+\section*{Problem 7.19}
+
+\begin{quote}
+    \itshape
+    Suppose that $\{c_n\}$ is a monotonically decreasing sequence such
+    that $\lim_{n\to\infty} c_n = 0$. Use Theorem 7.2 to prove that
+    the series $\sum (-1)^n c_n$ converges.
+\end{quote}
+
+Suppose that $\{c_n\}$ is a monotonically decreasing sequence such
+that $\lim_{n\to\infty} c_n = 0$. We'll show that
+the series $\sum (-1)^n c_n$ converges.
+
+If $n$ is even, then $\sum_{k=1}^n (-1)^k = 0$, and when
+$n$ is odd, $\sum_{k=1}^n (-1)^k = -1$. In either case,
+$\Bigl|\sum_{k=1}^n (-1)^k\Bigr| < 2$, so the sequence of partial sums of
+$\{(-1)^n\}$ is bounded.
+Then since $\{c_n\}$ is monotically decreasing with $\{c_n\} \to 0$,
+Theorem 7.2 ensures $\sum (-1)^n c_n$ converges.
+
+\qedsymbol
+
+\end{document}
