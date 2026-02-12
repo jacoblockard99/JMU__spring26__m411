@@ -389,3 +389,139 @@ Further, $a_{m+1}^+ < \epsilon$, since $m + 1 > m \geq n$. So we have:
 So $q = m+1$ has the desired properties.
 
 \qedsymbol
+
+\section*{Problem 7.26}
+
+\begin{quote}
+    \itshape
+    Prove that for any $\alpha, \beta \in \mathbb{R}$ with $\alpha < \beta$,
+    if $\sum a_n$ converges conditionally, there exists a rearrangement
+    of the series $\sum a'_n$ with partial sums $s'_n$ such that
+    \begin{align*}
+        \liminf_{n\to\infty} s'_n = \alpha, \; \text{and} \;
+        \limsup_{n\to\infty} s'_n = \beta \,.
+    \end{align*}
+\end{quote}
+
+We will not prove this formally, but will instead informally construct
+such a rearrangment and justify why it has the desired properties.
+
+We construct our sequence $\{a'_n\}$ by alternating between two steps:
+\begin{enumerate}
+    \item taking enough terms of $\{a_n^+\}$ so that their sum is sufficiently
+    large in magnitude to make the whole sum greater
+    than $\beta$ but as small as possible; and
+    \item taking enough terms of $\{a_n^-\}$ so that their sum is sufficiently
+    large in magnitude to make the whole sum less than $\alpha$ but as
+    large as possible.
+\end{enumerate}
+In this process, we skip terms from $\{a_n^+\}$ and $\{a_n^-\}$ where
+$a_n^+ \neq a_n$ or $a_n^- \neq a_n$. Since this can only occur when
+$a_n = 0$, it does not change the incremental sums.
+Since $\sum a_n^+$ goes off to $\infty$ and $\sum a_n^-$ goes off to $-\infty$, we
+are assured that we can always take enough terms of each to produce the
+stated behavior.
+
+Every term of $\{a_n\}$ is either in $\{a_n^+\}$ or in $\{a_n^-\}$.
+Since any term of $\{a_n^+\}$ and $\{a_n^-\}$ that is in $\{a_n\}$
+is eventually represented, we know that every term of $\{a_n\}$ is represented.
+Further, no term is repeated, since neither $\{a_n^+\}$ nor $\{a_n^-\}$
+repeat terms from $\{a_n\}$, and neither one contains terms
+of $\{a_n\}$ that the other contains.
+So we are justified in claiming that $\{a_n'\}$ is a rearrangment of $\{a_n\}$.
+
+There are an infinite number of terms of $\{s_n'\}$ greater than $\beta$---namely,
+every partial sum obtained by summing up to the end of the
+terms taken in any instance of step (1) above. Likewise, there
+are an infinite number of terms of $\{s_n'\}$ less than $\alpha$.
+Moreover, these are the only terms of $\{s_n'\}$ above $\beta$ and below $\alpha$,
+since within a step the sum is monotonic, we made each post-step sum as small in magnitude as possible,
+and after each step, the terms of $\{a_n'\}$ change sign.
+
+We've shown in previous problems that since $\sum a_n$ converges,
+$\{a_n^+\} \to 0$ and $\{a_n^-\} \to 0$. Let $\epsilon > 0$.
+So there's an $N$ such that if $n \geq N$, we have
+$a_n^+ < \epsilon$ and $a_n^- > -\epsilon$.
+Consider a term $s_n'$ of $\{s_n'\}$ with $n \geq N$ such that $s_n' > \beta$.
+We know that $s_{n-1}' \leq \beta$, since $s_n'$ is as small as possible. So we have:
+\begin{gather*}
+    s_n' - \beta \leq s_n' - s_{n-1}' = a_n^+ < \epsilon \\
+    s_n' < \beta + \epsilon \,.
+\end{gather*}
+Likewike, for a term $s_n' < \alpha$, we have:
+\begin{gather*}
+    s_n' - \alpha \geq s_n' - s_{n-1}' = a_n^- > -\epsilon \\
+    s_n' > \alpha -\epsilon \,.
+\end{gather*}
+We've shown that for any given $\epsilon > 0$, there are an infinite number of
+terms of $\{s_n'\}$ in the $\epsilon$-neighborhood around $\alpha$ and $\beta$---in particular,
+all the partial sums after a certain point obtained by summing up to the end of the terms taken in any
+step above.
+We conclude that $\alpha$ and $\beta$ are accumulation points for $\{s_n'\}$.
+
+Further, since no other terms---besides the ones that we've just shown
+converge to $\alpha$ and $\beta$---are above $\beta$ or below $\alpha$,
+we know that $\beta$ is the biggest accumulation point
+and $\alpha$ is the smallest accumulation point.
+
+\qedsymbol
+
+\section*{Problem 7.28}
+
+\begin{quote}
+    \itshape
+    Suppose that $\sum a_n$ converges and $a_n \geq 0$ for all $n$. Prove 
+    that $\sum \frac{\sqrt{a_n}}{n}$ converges as well.
+\end{quote}
+
+Suppose that $\sum a_n$ converges and $a_n \geq 0$ for all $n$. We'll show
+that $\sum \frac{\sqrt{a_n}}{n}$ converges as well.
+The Scharz inequality ensures that for any $N$,
+\begin{align*}
+    \Biggl(\sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \Biggr)^2 \leq 
+    \Biggl(\sum_{n=1}^N a_n\Biggr)\Biggl( \sum_{n=1}^N \frac{1}{n^2} \Biggr) \,.
+\end{align*}
+$\sum a_n$ converges by assumption and $\sum \frac{1}{n^2}$ converges since it's a $p$-series
+with $p > 1$. Problem 5.13 then ensures that
+\begin{align*}
+    \Biggl\{ \Biggl(\sum_{n=1}^N a_n\Biggr)\Biggl( \sum_{n=1}^N \frac{1}{n^2} \Biggr) \Biggr\}_{n=1}^\infty
+\end{align*}
+converges. We note that, for all $N$,
+\begin{align*}
+    \sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \geq 0 \,,
+\end{align*}
+since $a_n \geq 0$. Thus, the squeeze theorem ensures
+\begin{align*}
+    \Biggl\{\Biggl(\sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \Biggr)^2\Biggr\}_{n=1}^\infty
+\end{align*}
+converges.
+???
+
+\qedsymbol
+
+\section*{Problem 7.29}
+
+Let $\sum a_nx^n$ be a power series for some $x$. Let
+\begin{align*}
+    \alpha = \limsup_{n\to\infty} \sqrt[n]{|a_n|}
+\end{align*}
+and
+\begin{equation*}
+    R = \begin{cases}
+        0 &\quad \alpha = \infty \\
+        \frac{1}{\alpha} &\quad 0 < \alpha < \infty \\
+        \infty &\quad \alpha = 0
+    \end{cases} \,.
+\end{equation*}
+We will show that $\sum a_nx^n$ converges absolutely for all $|x| < R$
+and diverges for all $|x| > R$.
+
+Assume $\alpha = \infty$. Then $\{\sqrt[n]{|a_n|}\}$ is unbounded and
+for any $M > 0$ there's an $N$ such that if $n \geq N$ then
+\begin{align*}
+    \sqrt[n]{|a_n|} &> M \\
+    |a_n| &> M^n \,.
+\end{align*}
+So $\{|a_n|\}$ is unbounded and hence $\sum a_n$
+
+\end{document}
