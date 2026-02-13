@@ -119,6 +119,38 @@ Lemma 2 finishes the proof.
 
 \qedsymbol
 
+\section*{Lemma 4}
+
+\begin{quote}
+    \itshape
+    If $c > 0$ and $\{a_n\}$ is a sequence bounded above, then
+    \begin{align*}
+        \limsup_{n\to\infty} ca_n = c \limsup_{n\to\infty} a_n \,.
+    \end{align*}
+\end{quote}
+
+Let $c \geq 0$ and $\{a_n\}$ be a sequence. Let $\epsilon > 0$.
+Then there's an $N$ such that if $n \geq N$, we have
+\begin{align*}
+    |a_n - \limsup_{n\to\infty} a_n| &< \frac{\epsilon}{c} \\
+    |ca_n - c\limsup_{n\to\infty} a_n| &< \epsilon \,.
+\end{align*}
+So $c\limsup_{n\to\infty} a_n$ is an accumulation point of
+$\{ca_n\}$.
+
+Let $y > c \limsup_{n\to\infty} a_n$.
+Then $\frac{y}{c} > \limsup_{n\to\infty}a_n$, so $\frac{y}{c}$ is not
+an accumulation point of $\{a_n\}$.
+There must exists an $\epsilon > 0$ such that for all $N \in \mathbb{N}$
+there exists an $n \geq N$ with
+\begin{align*}
+    |a_n - \frac{y}{c}| &> \epsilon \\
+    |ca_n - y| &> c\epsilon \,.
+\end{align*}
+So $y$ is not an accumulation point of $\{ca_n\}$.
+
+\qedsymbol
+
 \section*{Problem 7.21}
 
 \begin{quote}
@@ -484,7 +516,7 @@ The Scharz inequality ensures that for any $N$,
 $\sum a_n$ converges by assumption and $\sum \frac{1}{n^2}$ converges since it's a $p$-series
 with $p > 1$. Problem 5.13 then ensures that
 \begin{align*}
-    \Biggl\{ \Biggl(\sum_{n=1}^N a_n\Biggr)\Biggl( \sum_{n=1}^N \frac{1}{n^2} \Biggr) \Biggr\}_{n=1}^\infty
+    \Biggl\{ \Biggl(\sum_{n=1}^N a_n\Biggr)\Biggl( \sum_{n=1}^N \frac{1}{n^2} \Biggr) \Biggr\}_{N=1}^\infty
 \end{align*}
 converges. We note that, for all $N$,
 \begin{align*}
@@ -492,10 +524,15 @@ converges. We note that, for all $N$,
 \end{align*}
 since $a_n \geq 0$. Thus, the squeeze theorem ensures
 \begin{align*}
-    \Biggl\{\Biggl(\sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \Biggr)^2\Biggr\}_{n=1}^\infty
+    \Biggl\{\Biggl(\sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \Biggr)^2\Biggr\}_{N=1}^\infty
 \end{align*}
 converges.
-???
+So 
+\begin{align*}
+    \Biggl\{\sum_{n=1}^N \sqrt{a_n} \cdot \frac{1}{n} \Biggr\}_{N=1}^\infty
+\end{align*}
+also converges. We haven't proven this, but since we know the square root
+function is continuous, it seems like a reasonable conclusion.
 
 \qedsymbol
 
@@ -516,12 +553,30 @@ and
 We will show that $\sum a_nx^n$ converges absolutely for all $|x| < R$
 and diverges for all $|x| > R$.
 
-Assume $\alpha = \infty$. Then $\{\sqrt[n]{|a_n|}\}$ is unbounded and
+Assume $\alpha = \infty$ and $|x| > 0$. Then $\{\sqrt[n]{|a_n|}\}$ is unbounded and
 for any $M > 0$ there's an $N$ such that if $n \geq N$ then
 \begin{align*}
-    \sqrt[n]{|a_n|} &> M \\
-    |a_n| &> M^n \,.
+    \sqrt[n]{|a_n|} &> \sqrt[n]{M}\bigl|x^{-1}\bigr| \\
+    |a_n| &> M \bigl|x^{-n}\bigr| \\
+    |a_nx^n| &> M \,.
 \end{align*}
-So $\{|a_n|\}$ is unbounded and hence $\sum a_n$
+So $\{a_nx^n\}$ is unbounded and hence $\sum a_n x^n$ diverges.
+
+Now assume $0 < \alpha < \infty$.
+Lemma 4 ensures that
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{|a_n x^n|} = |x| \limsup_{n\to\infty} \sqrt[n]{|a_n|} = |x|\alpha \,.
+\end{align*}
+If $|x| < \frac{1}{\alpha}$, then $|x|\alpha < 1$ and the root test
+ensures $\sum a_n x^n$ converges. If $|x| > \frac{1}{\alpha}$, then
+$|x|\alpha > 1$ and the root test ensures $\sum a_n x^n$ diverges.
+
+Finally, assume $\alpha = 0$. Then Lemma 4 ensures that
+\begin{align*}
+    \limsup_{n\to\infty} \sqrt[n]{|a_n x^n|} = |x| \limsup_{n\to\infty} \sqrt[n]{|a_n|} = 0 < 1 \,.
+\end{align*}
+The root test ensures $\sum a_n x^n$ converges.
+
+\qedsymbol
 
 \end{document}
