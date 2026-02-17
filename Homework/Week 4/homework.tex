@@ -158,4 +158,45 @@ We conclude:
 Since $\{A_n\} \to A$ and $\{B\}_{n=0}^\infty \to B$, Problem 5.13
 ensures $\{A_n B\} \to AB$.
 
+\qedsymbol
+
+\section*{Problem 7.37}
+
+\begin{quote}
+    \itshape
+    Let $\sum a_n$ be a divergent series where $a_n > 0$ for all $n$. Prove
+    that $\sum \frac{a_n}{1+a_n}$ diverges.
+\end{quote}
+
+Let $\sum a_n$ be a divergent series with $a_n > 0$ for all $n$.
+We'll show that $\sum \frac{a_n}{1+a_n} = \sum \frac{1}{\sfrac{1}{a_n} + 1}$ diverges.
+
+Assume $\limsup_{n\to\infty} a_n = \infty$.
+Then there's a subsequence $\{a_n'\}$ of $\{a_n\}$ with $\{a_n'\} \to \infty$.
+So $\{\frac{1}{a_n'} \} \to 0$, $\{ \frac{1}{a_n'} + 1 \} \to 1$, and $\frac{1}{\sfrac{1}{a_n'} + 1} \to 1$.
+Since there's a subsequence $\{\frac{1}{\sfrac{1}{a_n'} + 1}\}$ of $\{\frac{a_n}{1+a_n}\}$
+that doesn't converge to 0, we know $\{\frac{a_n}{1+a_n} \} \not\to 0$.
+
+Assume $\limsup_{n\to\infty} = L > 0$.
+Then there's some subsequence $\{a_n'\}$ of $\{a_n\}$ with
+$\{a_n'\} \to L$. Since $\{a_n' + 1\} \to L + 1$ and $1 + a_n'$ is never zero,
+we have
+\begin{align*}
+    \Bigl\{ \frac{a_n'}{1+a_n'} \Bigr\} \to \frac{L}{L+1} \neq 0 \,.
+\end{align*}
+Since there's a subsequence $\Bigl\{ \frac{a_n'}{1+a_n'} \Bigr\}$ of
+$\Bigl\{ \frac{a_n}{1+a_n} \Bigr\}$ that doesn't converge to 0,
+we know $\Bigl\{ \frac{a_n}{1+a_n} \Bigr\} \not\to 0$.
+
+Assume $\limsup_{n\to\infty} a_n = 0$. Then there's some $N \in \mathbb{N}$
+such that if $n \geq N$, then $a_n < 1$, or $1 - a_n > 0$.
+So, if $n \geq N$, we have
+\begin{align*}
+    \frac{a_n}{1+a_n} > \frac{a_n}{1+a_n + (1 - a_n)} = \frac{a_n}{2} \,.
+\end{align*}
+Since $\sum a_n$ diverges, $\sum \frac{a_n}{2}$ also diverges, and the
+comparison test ensures $\sum \frac{a_n}{1+a_n}$ diverges.
+
+\qedsymbol
+
 \end{document}
