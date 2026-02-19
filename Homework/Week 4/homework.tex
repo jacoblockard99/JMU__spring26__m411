@@ -160,6 +160,33 @@ ensures $\{A_n B\} \to AB$.
 
 \qedsymbol
 
+\section*{Problem 7.36}
+
+\begin{quote}
+    \itshape
+    Suppose that $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ are
+    both absolutely convergent series. Define $c_n = \sum_{k=0}^n a_kb_{n-k}$.
+    Use Theorem 7.4 to prove that $\sum_{n=0}^\infty c_n$ is absolutely
+    convergent as well.
+\end{quote}
+
+Let $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ converge absolutely.
+Define $c_n = \sum_{k=0}^n a_k b_{n-k}$, and $\overline{c_n} = \sum_{k=0}^n |a_k| |b_{n-k}|$.
+We'll show that
+$\sum_{n=0}^\infty c_n$ converges absolutely.
+We notice that
+\begin{align*}
+    |c_n| = \Biggl| \sum_{k=0}^n a_k b_{n-k} \Biggr|
+    \leq \sum_{k=0}^n |a_k b_{n-k}|
+    = \sum_{k=0}^n |a_k| |b_{n-k}|
+    = \overline{c_n} \,.
+\end{align*}
+Since $\sum_{n=0}^\infty |a_n|$ and $\sum_{n=0}^\infty |b_n|$ both
+converge absolutely, Theorem 7.4 ensures that $\sum_{n=0}^\infty \overline{c_n}$
+converges. The comparison test then ensures $\sum_{n=0}^\infty |c_n|$
+converges. So $\sum_{n=0}^\infty c_n$ converges absolutely.
+
+\qedsymbol
 
 \section*{Problem 7.37}
 
