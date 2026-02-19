@@ -160,6 +160,50 @@ ensures $\{A_n B\} \to AB$.
 
 \qedsymbol
 
+\section*{Problem 7.33}
+
+\begin{quote}
+    \itshape
+    Let $\gamma = \sum_{n=0}^\infty |a_n|$. Use the first result in problem 7.32 to
+    prove that for any $\delta_1 > 0$, there exists an $N_1$ such that for all
+    $n > N_1$,
+    \begin{align*}
+        |\alpha_0 \beta_n + \alpha_1 \beta_{n-1} + \dots + \alpha_{n-N_1} \beta_{N_1}| \leq \delta_1 \gamma \,.
+    \end{align*}
+\end{quote}
+
+Let $\gamma = \sum_{n=0}^\infty |a_n|$ and $\delta_1 > 0$.
+We'll show that there exists an $N_1 \in \mathbb{N}$ such that for all
+$n > N_1$,
+\begin{align*}
+    |\alpha_0 \beta_n + \alpha_1 \beta_{n-1} + \dots + \alpha_{n-N_1} \beta_{N_1}| \leq \delta_1 \gamma \,.
+\end{align*}
+Problem 7.32 ensures that $\{\beta_n\} \to 0$, so there's an $N_1 \in \mathbb{N}$
+such that if $n \geq N_1$, then
+\begin{align*}
+    |\beta_n| <  \delta_1 \,.
+\end{align*}
+Since $\gamma = \sum_{n=0}^\infty |a_n|$ is increasing and $\delta_1 > 0$, we know
+\begin{align*}
+    \sum_{k=0}^{n-N_1} |a_k| &\leq \gamma \\
+    \sum_{k=0}^{n-N_1} \delta_1|a_k| &\leq \delta_1 \gamma \,,
+\end{align*}
+for all $n \geq N_1$.
+If $0 \leq k \leq n - N_1$, then $n - k \geq N_1$, so
+\begin{align*}
+    |\beta_{n-k}| < \delta_1 \,.
+\end{align*}
+Thus,
+\begin{align*}
+    \sum_{k=0}^{n-N_1} |\beta_{n-k}| |a_k| < \delta_1 \gamma \,.
+\end{align*}
+The triangle inequality now ensures
+\begin{align*}
+    \Biggl| \sum_{k=0}^{n-N_1} \beta_{n-k} a_k \Biggr| \leq \sum_{k=0}^{n-N_1} |\beta_{n-k} a_k| < \delta_1 \gamma \,.
+\end{align*}
+
+\qedsymbol
+
 \section*{Problem 7.36}
 
 \begin{quote}
