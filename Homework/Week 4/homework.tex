@@ -204,6 +204,44 @@ The triangle inequality now ensures
 
 \qedsymbol
 
+\section*{Problem 7.34}
+
+\begin{quote}
+    \itshape
+    Following along with the notation in the previous two problems:
+    \begin{enumerate}[label=(\alph*)]
+        \item Explain why we can choose an $M$ with $M > |\beta_n|$ for all $n$.
+        \item Then use the fact that $\sum_{n=0}^\infty |a_n|$ converges to show
+        that for any $\delta_2 > 0$, there exists an $N_2$ such that
+        for any $n > N_2$ we have
+        \begin{align*}
+            |a_{N_2}\beta_{n-N_2} + a_{N_2+1}\beta_{n-N_2-1} + \dots + a_n\beta_0| < M \delta_2 \,.
+        \end{align*}
+    \end{enumerate}
+\end{quote}
+
+\textbf{(a)} Since $\{\beta_n\}$ converges, it must be bounded.
+
+\textbf{(b)} Let $\delta_2 > 0$.
+Since $\sum_{n=0}^\infty |a_n|$ converges, the Cuachy criteron
+ensures
+\begin{align*}
+    \sum_{k=N_2}^{n} |a_k| &\leq \delta_2 \\
+    \sum_{k=0}^{n-N_2} |a_{N_2 + k}| &\leq \delta_2 \\
+    \sum_{k=0}^{n-N_2} |a_{N_2 + k}| M &\leq M\delta_2 \,.
+\end{align*}
+By construction, $M > |\beta_{n-N_2-k}|$ for all $k \in \{0, 1, \dots, n - N_2\}$.
+So we conclude:
+\begin{align*}
+    \sum_{k=0}^{n-N_2} |a_{N_2 + k}| |\beta_{n-N_2-k}| &< M\delta_2 \,.
+\end{align*}
+The triangle inequality then ensures
+\begin{align*}
+    \Biggl| \sum_{k=0}^{n-N_2} a_{N_2+k}\beta_{n-N_2-k} \Biggr| \leq \sum_{k=0}^{n-N_2} |a_{N_2 + k} \beta_{n-N_2-k}| < M\delta_2 \,.
+\end{align*}
+
+\qedsymbol
+
 \section*{Problem 7.36}
 
 \begin{quote}
