@@ -242,6 +242,47 @@ The triangle inequality then ensures
 
 \qedsymbol
 
+\section*{Problem 7.35}
+
+\begin{quote}
+    \itshape
+    Now we use the work of the previous problems to finish the proof of Theorem 7.4.
+    Choose appropriate values for $\delta_1$ and $\delta_2$ (as used in the previous
+    two problems) to prove that for any $\epsilon > 0$ there exists an $N$
+    (related to $N_1$ and $N_2$) such that for any $n \geq N$ we have
+    \begin{align*}
+        |a_0\beta_n + a_1\beta_{n-1}+\dots+a_n\beta_0| \leq \epsilon \,.
+    \end{align*}
+    Explain (using problem 7.32) why this means $\lim_{n\to\infty} C_n = AB$
+    and thus $\sum_{n=0}^\infty c_n = AB$.
+\end{quote}
+
+We will show that $\sum_{n=0}^\infty c_n = AB$.
+Let $\epsilon > 0$. Let $\delta_1 = \frac{\epsilon}{2\gamma}$, and
+$\delta_2 = \frac{\epsilon}{2M}$.
+Let $N = \max\{N_1, N_2\}$ and $n \geq N$. We have:
+\begin{align*}
+    \Biggl| \sum_{k=0}^n a_k\beta_{n-k} \Biggr|
+    &= 
+    \Biggl| \sum_{k=0}^{n-N} a_k\beta_{n-k}
+    + \sum_{k={n-M+1}}^n a_k\beta_{n-k} \Biggr| \\
+    &\leq \
+    \Biggl| \sum_{k=0}^{n-N} a_k\beta_{n-k} \Biggr|
+    + \Biggl| \sum_{k={n-M+1}}^n a_k\beta_{n-k} \Biggr| \\
+    &< \delta_1 \gamma + M\delta_2 \\
+    &= \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+    &= \epsilon \,.
+\end{align*}
+So $\lim_{n\to\infty} \sum_{k=0}^n a_k\beta_{n-k} = 0$.
+Then we have:
+\begin{align*}
+    \lim_{n\to\infty} C_n &= \lim_{n\to\infty} (A_nB) + \lim_{n\to\infty} \sum_{k=0}^n a_k \beta_{n-k} \\
+    &= AB + 0 = AB \,,
+\end{align*}
+by our results in Problem 7.32.
+
+\qedsymbol
+
 \section*{Problem 7.36}
 
 \begin{quote}
