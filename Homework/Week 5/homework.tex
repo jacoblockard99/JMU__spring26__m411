@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 5}
+\author{Jacob Lockard}
+\date{23 February 2026}
+
+\maketitle
+
+\section*{Problem 8.4}
+
+\begin{quote}
+    \itshape
+    Let $f$ be convex on $(a, b)$ and let $x, y, z$ be fixed such that
+    $a < x < y < z < b$. Prove that
+    \begin{align*}
+        \frac{(t-x)f(y) - (t-y)f(x)}{y-x} \leq f(t) \leq \frac{(z-t)f(y)+(t-y)f(z)}{z-y}
+    \end{align*}
+    for all $t$ with $y < t < z$, and, similarly,
+    \begin{align*}
+        \frac{(z-s)f(y)-(y-s)f(z)}{z-y} \leq f(s) \leq \frac{(y-s)f(x)+(s-x)f(y)}{y-x}
+    \end{align*}
+    for all $s$ with $x < s < y$.
+\end{quote}
+
+Let $f$ be convex on $(a, b)$ and let $x, y, z$ be fixed such that
+$a < x < y < z < b$. Let $y < t < z$. Then by definition,
+\begin{align*}
+    f(t) \leq \frac{f(y)(z-t) + f(z)(t-y)}{z - y} \,.
+\end{align*}
+Also, since $x < y < t$,
+\begin{align*}
+    f(y) &\leq \frac{(t-y)f(x) + (y-x)f(t)}{t-x} \\
+    f(y)(t-x) &\leq (t-y)f(x) + (y-x)f(t) \\
+    f(y)(t-x) - (t-y)f(x) &\leq (y-x)f(t) \\
+    \frac{f(y)(t-x) - (t-y)f(x)}{y-x} &\leq f(t) \,.
+\end{align*}
+Now let $x < s < y$. Similarly,
+\begin{align*}
+    \frac{(z-s)f(y)-(y-s)f(z)}{z-y} \leq f(s) \leq \frac{(y-s)f(x)+(s-x)f(y)}{y-x} \,.
+\end{align*}
+
+\qedsymbol
+
+
+\end{document}
