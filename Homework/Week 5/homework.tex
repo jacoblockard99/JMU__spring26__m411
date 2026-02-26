@@ -71,21 +71,20 @@ $x \in [a,b]$. We'll show that $f$ is continuous at $x$.
 
 Let $c = f'(x)$, which exists since $f$ is differentiable at $x$.
 Let $\epsilon > 0$.
-Since $f$ is differentiable at $x$, there's some $\gamma > 0$
+By definition, there's some $\gamma > 0$
 such that if $0 < |t-x| < \gamma$, then
 \begin{gather*}
     |\phi_x(t) - c| < 1 \,.
 \end{gather*}
-
 Let
 \begin{align*}
     \delta = \min \Bigl\{ \gamma, \frac{\epsilon}{1 + |c|} \Bigr\} \,,
 \end{align*}
-which exists and is positive, since $\gamma$, $\epsilon$, and
+which exists and is positive since $\gamma$, $\epsilon$, and
 $1 + |c|$ are all positive.
 
 Let $t \in (a,b)$ be such that $|t-x| < \delta$. If $t = x$, then
-$\bigl|(f) - f(x)\bigr| = 0 < \epsilon$.
+$\bigl|f(t) - f(x)\bigr| = 0 < \epsilon$.
 If $t \neq x$, then, by definition,
 \begin{align*}
     f(t) - f(x) &= \phi_x(t)(t-x) \\
@@ -103,5 +102,26 @@ We conclude that $f$ is continuous at $x$.
 
 \qedsymbol
 
+\section*{Problem 8.7}
+
+\begin{quote}
+    \itshape
+    Suppose that $f$ and $g$ are functions defined on $[a,b]$ and are both
+    differentiable at a point $x \in [a,b]$. Show that $(f+g)'(x) = f'(x) + g'(x)$.
+\end{quote}
+
+Let $f$ and $g$ be defined on $[a,b]$ and differentiable at some $x \in [a,b]$.
+We'll show that $(f+g)'(x) = f'(x) + g'(x)$. By definition,
+\begin{align*}
+    (f+g)'(x) &= \lim_{t\to x} \frac{(f+g)(t) - (f+g)(x)}{t-x} \\
+    &= \lim_{t\to x} \frac{f(t) + g(t) - f(x) - g(x)}{t-x} \\
+    &= \lim_{t\to x} \frac{f(t) - f(x) + g(t) - g(x)}{t-x} \\
+    &= \lim_{t\to x} \Biggl( \frac{f(t) - f(x)}{t-x} + \frac{g(t) - g(x)}{t-x} \Biggr) \\
+    &= \lim_{t\to x} \frac{f(t) - f(x)}{t-x} + \lim_{t\to x} \frac{g(t) - g(x)}{t-x} \\
+    &= f'(x) + g'(x) \,,
+\end{align*}
+which exists since $f$ and $g$ are differentiable at $x$.
+
+\qedsymbol
 
 \end{document}
