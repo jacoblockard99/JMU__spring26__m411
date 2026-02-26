@@ -74,30 +74,31 @@ Let $\epsilon > 0$.
 Since $f$ is differentiable at $x$, there's some $\gamma > 0$
 such that if $0 < |t-x| < \gamma$, then
 \begin{gather*}
-    |\phi_x(t) - c| < \sqrt{\epsilon} \,.
+    |\phi_x(t) - c| < 1 \,.
 \end{gather*}
 
-If $c \neq 0$, let
+Let
 \begin{align*}
-    \delta = \min\Bigl\{ \gamma, \frac{\epsilon}{2 |c|}, \frac{\sqrt{\epsilon}}{2} \Bigr\} \,.
+    \delta = \min \Bigl\{ \gamma, \frac{\epsilon}{1 + |c|} \Bigr\} \,,
 \end{align*}
-In this case, $\delta > 0$, since
-$\gamma$, $\epsilon$, and $|c|$ are all positive.
-Otherwise, let $\delta = \gamma$, in which case obviously $\delta > 0$.
+which exists and is positive, since $\gamma$, $\epsilon$, and
+$1 + |c|$ are all positive.
 
 Let $t \in (a,b)$ be such that $|t-x| < \delta$. If $t = x$, then
 $\bigl|(f) - f(x)\bigr| = 0 < \epsilon$.
 If $t \neq x$, then, by definition,
 \begin{align*}
     f(t) - f(x) &= \phi_x(t)(t-x) \\
-    &= \bigl(\phi_x(t) - c \bigr)(t-x) + c(t-x) \\
-    |f(t) - f(x)| &= \bigl|\bigl(\phi_x(t) - c \bigr)(t-x) + c(t-x)\bigr| \\
-    &\leq \bigl|\bigl(\phi_x(t) - c \bigr)(t-x)\bigr| + \bigl|c(t-x)\bigr| \\
-    &= \bigl|\phi_x(t) - c\bigr||t-x| + |c||t-x| \\
-    &< \sqrt{\epsilon}\cdot\frac{\sqrt{\epsilon}}{2} + |c|\frac{\epsilon}{2|c|} \\
-    &= \frac{\epsilon}{2} + \frac{\epsilon}{2}
-    = \epsilon \,.
+    &= \bigl(\phi_x(t) - c +c \bigr)(t-x) \\
+    \bigl|f(t) - f(x)\bigr| &= \bigl|\bigl(\phi_x(t) - c +c \bigr)(t-x)\bigr| \\
+    &= |\phi_x(t) - c +c||t-x| \\
+    &\leq |t-x| \bigl( |\phi_x(t) - c| + |c| \bigr) \\
+    &< |t-x| \bigl( 1 + |c| \bigr) \\
+    &< \frac{\epsilon}{1 + |c|} \bigl(1 + |c|\bigr) \\
+    &= \epsilon \,,
 \end{align*}
+where the first inequality is justified by the triangle inequality,
+and the others are justified because $|t-x| < \delta$.
 We conclude that $f$ is continuous at $x$.
 
 \qedsymbol
