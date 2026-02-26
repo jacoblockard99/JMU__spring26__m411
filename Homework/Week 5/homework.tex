@@ -124,4 +124,50 @@ which exists since $f$ and $g$ are differentiable at $x$.
 
 \qedsymbol
 
+\section*{Problem 8.8}
+
+\begin{quote}
+    \itshape
+    Suppose that $f$ and $g$ are functions defined on $[a,b]$ and are both
+    differentiable at a point $x \in [a,b]$. Show that $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$.
+\end{quote}
+
+Let $f$ and $g$ be defined on $[a,b]$ and differentiable at some $x \in [a,b]$.
+We'll show that $(fg)'(x) = f'(x)g(x) + f(x)g'(x)$.
+
+For all $t \in [a,b]$, we denote
+\begin{align*}
+    F_t = f(t) - f(x) \,; \\
+    G_t = g(t) - g(x) \,.
+\end{align*}
+
+We observe that
+\begin{align*}
+    f(t)g(t) &= \bigl(f(x) + f(t) - f(x)\bigr) \bigl(g(x) + g(t) - g(x)\bigr) \\
+    &= (f(x) + F_t)(g(x) + G_t) \\
+    &= f(x)g(x) + f(x) G_t + g(x) F_t + F_t G_t \,.
+\end{align*}
+So,
+\begin{align*}
+    \lim_{t \to x} \frac{f(t)g(t) - f(x)g(x)}{t-x} &= \lim_{t \to x} \frac{f(x)G_t + g(x) F_t + F_t G_t}{t-x} \\
+    &= f(x) \lim_{t \to x} \frac{G_t}{t-x} + g(x) \lim_{t \to x} \frac{F_t}{t-x} + \lim_{t \to x} F_t G_t \\
+    &= f(x) g'(x) + g(x) f'(x) + \lim_{t \to x} F_t G_t \,.
+\end{align*}
+Problem 8.6 ensures $f$ and $g$ are continuous at $x$. So $t \mapsto F_t G_t$ is continuous
+by Problem 6.6, and we can say
+\begin{align*}
+    \lim_{t \to x} F_t G_t
+    = F_x G_x = \Bigl( f(x) - f(x) \Bigr) \Bigl( g(x) - g(x) \Bigr) = 0 \,.
+\end{align*}
+So we have
+\begin{align*}
+    (fg)'(x)
+    &= \lim_{t \to x} \frac{(fg)(t) - (fg)(x)}{t-x} \\
+    &= \lim_{t \to x} \frac{f(t)g(t) - f(x)g(x)}{t-x} \\
+    &= f(x) g'(x) + g(x) f'(x) \,.
+\end{align*}
+
+\qedsymbol
+
+
 \end{document}
