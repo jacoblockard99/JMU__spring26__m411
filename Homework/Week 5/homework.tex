@@ -57,5 +57,50 @@ Now let $x < s < y$. Similarly,
 
 \qedsymbol
 
+\section*{Problem 8.6}
+
+\begin{quote}
+    \itshape
+    Let $f$ be defined on $[a,b]$. Prove that if $f$ is
+    differentiable at a point $x \in [a,b]$, then $f$ is
+    continuous at $x$.
+\end{quote}
+
+Let $f$ be defined on $[a,b]$ and differentiable at some
+$x \in [a,b]$. We'll show that $f$ is continuous at $x$.
+
+Let $c = f'(x)$, which exists since $f$ is differentiable at $x$.
+Let $\epsilon > 0$.
+Since $f$ is differentiable at $x$, there's some $\gamma > 0$
+such that if $0 < |t-x| < \gamma$, then
+\begin{gather*}
+    |\phi_x(t) - c| < \sqrt{\epsilon} \,.
+\end{gather*}
+
+If $c \neq 0$, let
+\begin{align*}
+    \delta = \min\Bigl\{ \gamma, \frac{\epsilon}{2 |c|}, \frac{\sqrt{\epsilon}}{2} \Bigr\} \,.
+\end{align*}
+In this case, $\delta > 0$, since
+$\gamma$, $\epsilon$, and $|c|$ are all positive.
+Otherwise, let $\delta = \gamma$, in which case obviously $\delta > 0$.
+
+Let $t \in (a,b)$ be such that $|t-x| < \delta$. If $t = x$, then
+$\bigl|(f) - f(x)\bigr| = 0 < \epsilon$.
+If $t \neq x$, then, by definition,
+\begin{align*}
+    f(t) - f(x) &= \phi_x(t)(t-x) \\
+    &= \bigl(\phi_x(t) - c \bigr)(t-x) + c(t-x) \\
+    |f(t) - f(x)| &= \bigl|\bigl(\phi_x(t) - c \bigr)(t-x) + c(t-x)\bigr| \\
+    &\leq \bigl|\bigl(\phi_x(t) - c \bigr)(t-x)\bigr| + \bigl|c(t-x)\bigr| \\
+    &= \bigl|\phi_x(t) - c\bigr||t-x| + |c||t-x| \\
+    &< \sqrt{\epsilon}\cdot\frac{\sqrt{\epsilon}}{2} + |c|\frac{\epsilon}{2|c|} \\
+    &= \frac{\epsilon}{2} + \frac{\epsilon}{2}
+    = \epsilon \,.
+\end{align*}
+We conclude that $f$ is continuous at $x$.
+
+\qedsymbol
+
 
 \end{document}
