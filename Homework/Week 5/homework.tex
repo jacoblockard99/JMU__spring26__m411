@@ -57,6 +57,64 @@ Now let $x < s < y$. Similarly,
 
 \qedsymbol
 
+\section*{Problem 8.5}
+
+\begin{quote}
+    \itshape
+    Let $f$ be convex on $(a,b)$. Prove that $f$ is continuous on $(a,b)$.
+\end{quote}
+
+Let $f$ be convex on $(a,b)$. We'll show that $f$ is continuous on $(a,b)$.
+Let $y \in (a,b)$ and let $\epsilon > 0$. Let $x \in (a, y)$ and $z \in (y, b)$.
+Denote
+\begin{align*}
+    m_1 = \frac{f(y) - f(x)}{y-x}\,, \quad
+    m_2 = \frac{f(z) - f(y)}{z-y} \,.
+\end{align*}
+$m_1$ and $m_2$ exist, since $x \neq y$ and $z \neq y$. Let
+\begin{align*}
+    \delta = \min \Bigl\{ \frac{\epsilon}{|m_1|}, \frac{\epsilon}{|m_2|}, z-y, y-x \Bigr\} \,,
+\end{align*}
+removing $\frac{\epsilon}{|m_1|}$ if $m_1 = 0$ and removing $\frac{\epsilon}{|m_2|}$
+if $m_2 = 0$.
+$\delta$ is positive, since $\epsilon > 0$, $z > y$, and $x < y$.
+Let $t \in (a,b)$ be such that $|t-y| < \delta$. If $t = y$,
+then $|f(t) - f(y)| = 0 < \epsilon$.
+
+If $t - y > 0$, then $t-y = |t-y| < \delta \leq z-y$, so
+$y < t < z$, and Problem 8.4 ensures
+\begin{gather*}
+    \frac{(t-x)f(y) - (t-y)f(x)}{y-x} \leq f(t) \leq \frac{(z-t)f(y)+(t-y)f(z)}{z-y} \\
+    \frac{(t-y)f(y) - (t-y)f(x)}{y-x} \leq f(t) - f(y) \leq \frac{-(t-y)f(y)+(t-y)f(z)}{z-y} \\
+    \frac{t-y}{y-x} (f(y) - f(x)) \leq f(t) - f(y) \leq \frac{t-y}{z-y} (f(z) - f(y)) \\
+    m_1 (t-y) \leq f(t) - f(y) \leq m_2 (t-y) \,.
+\end{gather*}
+Now, if $m_1 = 0$, we have
+\begin{align*}
+    |m_1(t-y)| = 0 < \epsilon \,,
+\end{align*}
+and if $m_1 \neq 0$, then since
+$t-y = |t-y| < \frac{\epsilon}{|m_1|}$, we have
+\begin{align*}
+    |m_1(t-y)| &< \epsilon \,.
+\end{align*}
+Likewise, if $m_2 = 0$, we have
+\begin{align*}
+    |m_2(t-y) = 0 < \epsilon \,,
+\end{align*}
+and if $m_2 \neq 0$, then since $t-y = |t-y| < \frac{\epsilon}{|m_2|}$, we know
+\begin{align*}
+    |m_2(t-y)| &< \epsilon \,.
+\end{align*}
+So in any case,
+\begin{align*}
+    \bigl|f(t) - f(y)\bigr| < \epsilon \,.
+\end{align*}
+A similar argument (which we will not reproduce here) applies with the second set of inequalities in Problem 8.4
+if $t < y$.
+
+\qedsymbol
+
 \section*{Problem 8.6}
 
 \begin{quote}
