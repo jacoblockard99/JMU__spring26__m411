@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 6}
+\author{Jacob Lockard}
+\date{2 March 2026}
+
+\maketitle
+
+\section*{Problem 8.9}
+
+\begin{quote}
+    \itshape
+    Suppose that $f$ and $g$ are functions defined on $[a,b]$ and are both
+    differentiable at a point $x \in [a,b]$. Show that if $g(x) \neq 0$,
+    \begin{align*}
+        \Bigl( \frac{f}{g} \Bigr)' (s) = \frac{ f'(x)g(x) - f(x)g'(x) }{ (g(x))^2} \,.
+    \end{align*}
+\end{quote}
+
+Let $f$ and $g$ be defined on $[a,b]$ and differentiable at some $x \in [a,b]$,
+with $g(x) \neq 0$. We'll show that
+\begin{align*}
+    \Bigl( \frac{f}{g} \Bigr)' (s) = \frac{ f'(x)g(x) - f(x)g'(x) }{ (g(x))^2} \,.
+\end{align*}
+We first observe that $\bigl(g^{-1}\bigr)'(x)$ is given by
+\begin{align*}
+    \bigl(g^{-1}\bigr)'(x) &= \lim_{t\to x} \frac{\frac{1}{g(t)} - \frac{1}{g(x)}}{t-x} \\
+    &= \lim_{t\to x} \frac{\frac{g(x) - g(t)}{g(t)g(x)}}{t-x} \\
+    &= \lim_{t\to x} \Biggl( \frac{1}{g(t)g(x)} \cdot \frac{g(x) - g(t)}{t-x} \Biggr) \\
+    &= \lim_{t\to x} \frac{1}{g(t)g(x)} \cdot \lim_{t\to x} \frac{g(x) - g(t)}{t-x} \\
+    &= \frac{1}{g(x)^2}(-g'(x)) \\
+    &= -\frac{g'(x)}{g(x)^2} \,,
+\end{align*}
+since Problem 8.6 implies $g$ is continuous at $x$ and hence that
+$t \mapsto \frac{1}{g(t)g(x)}$ is continuous at $x$, since $g(x) \neq 0$
+Problem 8.8 now ensures
+\begin{align*}
+    \Bigl( \frac{f}{g} \Bigr)'(x) = ( fg^{-1} )'(x) &= 
+    f(x)\bigl(g^{-1}\bigr)'(x) + f'(x)g^{-1}(x) \\
+    &= -f(x) \frac{g'(x)}{g(x)^2} + f'(x)\frac{1}{g(x)} \\
+    &= -f(x) \frac{g'(x)}{g(x)^2} + f'(x)\frac{g(x)}{g(x)^2} \\
+    &= \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2} \,.
+\end{align*}
+
+\qedsymbol
+
+\section*{Problem 8.10}
+
+\begin{quote}
+    \itshape
+    Suppose that $f$ is continous on $[a,b]$, $f$ is differentiable at some
+    point $x \in [a,b]$, $g$ is defined on an interval which contains
+    the range of $f$, and $g$ is differentiable at $f(x)$. Let
+    \begin{align*}
+        h(t) = g(f(t)) \quad \text{for } t \in [a,b] \,.
+    \end{align*}
+    Prove that $h$ is differentiable at $x$ and
+    \begin{align*}
+        h'(x) = g'(f(x))f'(x) \,.
+    \end{align*}
+\end{quote}
+
+Let $f$ be continous on $[a,b]$ and differentiable at some $x \in [a,b]$.
+Let $g$ be defined on some interval $[\alpha, \beta]$ that 
+
+By definition,
+\begin{align*}
+    g'(f(x)) = \lim_{t \to f(x)} \frac{g(t) - g(f(x))}{t-f(x)} \,.
+\end{align*}
+This means that there's
+
+\section*{Problem 8.13}
+
+Let $f$ and $g$ be continuous real-valued functions on $[a,b]$
+which are differentiable on $(a,b)$. Define, for all $t  \in [a,b]$,
+\begin{align*}
+    h(t) = [f(b) - f(a)]g(t) - [g(b) - g(a)]f(t) \,.
+\end{align*}
+
+We first show that $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$.
+Problem 6.6 ensures $h$ is continuous on $[a,b]$.
+$t \mapsto f(b) - f(a)$, $t \mapsto g(b) - g(a)$, $g$, and $f$ are all differentiable
+on $(a,b)$, so Problem 8.8 and 8.7 ensures $h$ is also differentiable on $(a,b)$.
+
+Now we show that $h(a) = h(b)$:
+\begin{align*}
+    h(a) &= [f(b) - f(a)]g(a) - [g(b) - g(a)]f(a) \\
+    &= f(b)g(a) - f(a)g(a) - [g(b)f(a) - g(a)f(a)] \\
+    &= f(b)g(a) - f(a)g(a) - g(b)f(a) + g(a)f(a) \\
+    &= f(b)g(a) - g(b)f(a) \\
+    &= g(b)f(b) - g(b)f(a) - g(b)f(b) + f(b)g(a)  \\
+    &= [f(b) - f(a)]g(b) - [g(b) + g(a)]f(b)  \\
+    &= h(b) \,.
+\end{align*}
+
+Finally, suppose $h'(x) = 0$ for some $x \in (a,b)$. We'll show that
+\begin{align*}
+    [f(b) - f(a)]g'(x) = [g(b) - g(a)]f'(x) \,.
+\end{align*}
+Since $t \mapsto f(b) - f(a)$ and $t \mapsto g(b) -g(a)$ are constant functions,
+Problems 8.7 and 8.8 ensure
+\begin{align*}
+    h'(t) = [f(b)-f(a)]g'(t) - [g(b)-g(a)]f'(t) \,.
+\end{align*}
+So we have:
+\begin{align*}
+    0 = h'(x) &= [f(b) - f(a)]g'(x) - [g(b) - g(a)]f'(x) \\
+    [f(b) - f(a)]g'(x) &= [g(b) - g(a)]f'(x) \,.
+\end{align*}
+
+\qedsymbol
+
+\end{document}
