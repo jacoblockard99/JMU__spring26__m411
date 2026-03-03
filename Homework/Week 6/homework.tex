@@ -64,7 +64,7 @@ Problem 8.8 now ensures
 
 \begin{quote}
     \itshape
-    Suppose that $f$ is continous on $[a,b]$, $f$ is differentiable at some
+    Suppose that $f$ is continuous on $[a,b]$, $f$ is differentiable at some
     point $x \in [a,b]$, $g$ is defined on an interval which contains
     the range of $f$, and $g$ is differentiable at $f(x)$. Let
     \begin{align*}
@@ -76,7 +76,7 @@ Problem 8.8 now ensures
     \end{align*}
 \end{quote}
 
-Let $f$ be continous on $[a,b]$ and differentiable at some $x \in [a,b]$.
+Let $f$ be continuous on $[a,b]$ and differentiable at some $x \in [a,b]$.
 Let $g$ be defined on some interval $[\alpha, \beta]$ that 
 
 By definition,
@@ -165,25 +165,32 @@ that there is an $x \in (a,b)$ such that
 \end{align*}
 where $g$ is the identity function on $[a,b]$.
 
-Let $f$ be defined on $[a,b]$, with $f'(x) = 0$ for all $x \in (a,b)$.
-Let $x, y \in [a,b]$ with $x < y$. We know $f$ is differentiable on $(x,y)$,
-so it's also continuous on $(x,y)$, and hence on $[x,y]$ by our lemma above.
+Let $f$ be continuous on $[a,b]$, with $f'(x) = 0$ for all $x \in (a,b)$.
+Let $x, y \in [a,b]$ with $x < y$. Then $f$ is differentiable on $(x,y)$ and
+continuous on $[x,y]$.
 By our discussion above, there's a $p \in (x,y)$ such that
 \begin{align*}
     f(y) - f(x) &= (y-x)f'(p) = 0 \\
     f(y) &= f(x) \,.
 \end{align*}
-So $f$ has the same value over the entirety of $(a,b)$. The endpoints
-must also have this value, or else they would constitute a jump
-discontinuity. So we've shown that $f$ is constant.
+So $f$ has some value over the entirety of $(a,b)$.
+$f$ must also have this value at $a$ and $b$, or else
+$f$ would have discontinuities
+there. So we've shown that $f$ is constant.
 
-Let $f$ be defined on $(a,b)$, with $f'(x) \geq 0$ for all $x \in (a,b)$.
+Let $f$ be continuous on $[a,b]$, with $f'(x) \geq 0$ for all $x \in (a,b)$.
 Let $x, y \in (a,b)$ with $x < y$. By our discussion above, there's a $p \in (x,y)$
 such that
 \begin{gather*}
     f(y) - f(x) = (y-x)f'(p) \geq 0 \\
     f(y) \geq f(x) \,.
 \end{gather*}
+Suppose $f(a) > f(p)$ for some $p \in (a,b)$. Then the intermediate
+value theorem ensures there's a $c \in (a, p) \subseteq (a,b)$ such that $f(p) < f(c) < f(p)$.
+But we've already shown $f(c) \geq f(p)$, so we conclude $f(a) \leq f(p)$
+for all $p \in (a,b)$. A similar argument shows that
+$f(p) \leq f(b)$ for all $p \in (a,b)$.
+Transitivity ensures $f(a) \leq f(b)$, since $(a,b) \neq \varnothing$.
 
 \qedsymbol
 
