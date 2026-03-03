@@ -18,7 +18,7 @@
 
 \title{MATH 411: Week 6}
 \author{Jacob Lockard}
-\date{2 March 2026}
+\date{3 March 2026}
 
 \maketitle
 
@@ -48,7 +48,7 @@ We first observe that $\bigl(g^{-1}\bigr)'(x)$ is given by
     &= -\frac{g'(x)}{g(x)^2} \,,
 \end{align*}
 since Problem 8.6 implies $g$ is continuous at $x$ and hence that
-$t \mapsto \frac{1}{g(t)g(x)}$ is continuous at $x$, since $g(x) \neq 0$
+$t \mapsto \frac{1}{g(t)g(x)}$ is continuous at $x$, since $g(x) \neq 0$.
 Problem 8.8 now ensures
 \begin{align*}
     \Bigl( \frac{f}{g} \Bigr)'(x) = ( fg^{-1} )'(x) &= 
@@ -96,7 +96,7 @@ which are differentiable on $(a,b)$. Define, for all $t  \in [a,b]$,
 We first show that $h$ is continuous on $[a,b]$ and differentiable on $(a,b)$.
 Problem 6.6 ensures $h$ is continuous on $[a,b]$.
 $t \mapsto f(b) - f(a)$, $t \mapsto g(b) - g(a)$, $g$, and $f$ are all differentiable
-on $(a,b)$, so Problem 8.8 and 8.7 ensures $h$ is also differentiable on $(a,b)$.
+on $(a,b)$, so Problems 8.8 and 8.7 ensure $h$ is also differentiable on $(a,b)$.
 
 Now we show that $h(a) = h(b)$:
 \begin{align*}
@@ -149,7 +149,41 @@ and if $x_{\text{max}} = b$ and $x_{\text{min}} = a$, then we have
 \end{align*}
 But if $m = M$, then for all $x \in [a,b]$ we have
 $h(x) \geq m = M$ and $h(x) \leq M$; so $h(x) = M$ and $h'(x) = 0$ for any $x \in [a,b]$.
-In any case, we've shown that an $x$ with the desired properties exist.
+In any case, we've shown that an $x$ with the desired property exists.
+
+\qedsymbol
+
+\section*{Problem 8.15}
+
+Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$.
+It follows directly from Cauchy's Mean Value Theorem
+that there is an $x \in (a,b)$ such that
+\begin{align*}
+    [f(b) - f(a)]g'(x) = (g(b)-g(a)) f'(x) \\
+    [f(b) - f(a)]\cdot 1 = (b-a) f'(x) \\
+    f(b) - f(a) = (b-a) f'(x) \,,
+\end{align*}
+where $g$ is the identity function on $[a,b]$.
+
+Let $f$ be defined on $[a,b]$, with $f'(x) = 0$ for all $x \in (a,b)$.
+Let $x, y \in [a,b]$ with $x < y$. We know $f$ is differentiable on $(x,y)$,
+so it's also continuous on $(x,y)$, and hence on $[x,y]$ by our lemma above.
+By our discussion above, there's a $p \in (x,y)$ such that
+\begin{align*}
+    f(y) - f(x) &= (y-x)f'(p) = 0 \\
+    f(y) &= f(x) \,.
+\end{align*}
+So $f$ has the same value over the entirety of $(a,b)$. The endpoints
+must also have this value, or else they would constitute a jump
+discontinuity. So we've shown that $f$ is constant.
+
+Let $f$ be defined on $(a,b)$, with $f'(x) \geq 0$ for all $x \in (a,b)$.
+Let $x, y \in (a,b)$ with $x < y$. By our discussion above, there's a $p \in (x,y)$
+such that
+\begin{gather*}
+    f(y) - f(x) = (y-x)f'(p) \geq 0 \\
+    f(y) \geq f(x) \,.
+\end{gather*}
 
 \qedsymbol
 
