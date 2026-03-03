@@ -126,4 +126,31 @@ So we have:
 
 \qedsymbol
 
+\section*{Problem 8.14}
+
+\begin{quote}
+    \itshape
+    Using the conclusions from the previous problem, show that there exists
+    some $x \in (a,b)$ such that $h'(x) = 0$.
+\end{quote}
+
+Problem 6.13 ensures that $h$ attains a maximum value $M$ and a minimum value $m$
+at some $x_{\text{max}}$ and $x_{\text{min}}$, respectively, in $[a,b]$.
+
+If either $x_{\text{min}} \in (a,b)$ or $x_{\text{max}} \in (a,b)$, then
+Theorem 8.1 ensures either $f'(x_{\text{min}}) = 0$ or $f'(x_{\text{max}}) = 0$.
+On the other hand, if $x_{\text{min}} = a$ and $x_{\text{max}} = b$, then we have
+\begin{align*}
+    M = f(x_{\text{max}}) = f(a) = f(b) = f(x_{\text{min}}) = m \,,
+\end{align*}
+and if $x_{\text{max}} = b$ and $x_{\text{min}} = a$, then we have
+\begin{align*}
+    m = f(x_{\text{min}}) = f(a) = f(b) = f(x_{\text{max}}) = M \,.
+\end{align*}
+But if $m = M$, then for all $x \in [a,b]$ we have
+$h(x) \geq m = M$ and $h(x) \leq M$; so $h(x) = M$ and $h'(x) = 0$ for any $x \in [a,b]$.
+In any case, we've shown that an $x$ with the desired properties exist.
+
+\qedsymbol
+
 \end{document}
