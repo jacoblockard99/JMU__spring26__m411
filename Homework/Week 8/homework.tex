@@ -153,8 +153,10 @@ Let $y \in (a, c)$, and consider
     \lim_{x \to a^+} \frac{f(y) - f(x)}{g(y) - g(x)}
     &=  \frac{\lim_{x \to a^+} \bigl( f(y) - f(x) \bigr)}{\lim_{x \to a^+} \bigl(g(y) - g(x)\bigr)} \\
     &=  \frac{f(y) - \lim_{x \to a^+} f(x) }{ g(y) - \lim_{x \to a^+} g(x)} \\
-    &= \frac{f(y)}{g(y)} \,.
+    &= \frac{f(y)}{g(y)} \,,
 \end{align*}
+where the equalities are justified by the fact that
+$f$ and $g$ are continuous at $x$.
 Let $\alpha \in I$ with $\alpha < a$ and let $\beta \in (y, c)$.
 $\alpha$ exists, since $I$ is an open interval and $a \in I$.
 Since $(\alpha, \beta) \subseteq I$, both $f$ and $g$ are defined on
