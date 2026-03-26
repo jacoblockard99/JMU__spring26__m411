@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[parfill]{parskip}
+\usepackage{esvect}
+\usepackage[thinc]{esdiff}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{enumitem}
+
+\DeclareMathOperator{\lub}{lub}
+\DeclareMathOperator{\gub}{gub}
+
+\begin{document}
+
+\title{MATH 411: Week 8}
+\author{Jacob Lockard}
+\date{24 March 2026}
+
+\maketitle
+
+\section*{Lemma 1}
+
+\begin{quote}
+    \itshape
+    Suppose $f$ is defined on an interval $(a, b)$ with $f(x) < M$
+    for all $x \in (a,b)$, and let $p \in (a,b)$. Then,
+    \begin{align*}
+        L = \limsup_{x \to p^+} f(x) \leq M \,.
+    \end{align*}
+    A similar result holds for minima and limits inferior.
+\end{quote}
+Since $f$ is bounded on $(a, b)$, we already know $L$
+is finite. Suppose $L > M$ and let $\epsilon = L-M > 0$.
+Then if there's an $x \in (p,b) \subseteq (a,b)$ such that
+$f(x) \in (L - \epsilon, L + \epsilon)$, we have
+\begin{align*}
+    f(x) &> L - \epsilon = L - (L-M) = M \,.
+\end{align*}
+Since we know $f(x) < M$, no such $x$ exists.
+We've shown that there's a neighborhood around $L$ 
+containing no outputs of $f$ corresponding to inputs
+to the right of $p$. But $L$ is a limit superior,
+so we conclude $L \leq M$.\qedsymbol
+
+\section*{Setup}
+
+For Problems 8.21--24, assume that
+\begin{quote}
+    \itshape
+    Let $f$ and $g$ be real, differentiable functions on some open interval $I$
+    with $a \in I$, and $g'(x) \neq 0$ for all $x \in I$.
+    Suppose
+    \begin{align*}
+        \lim_{x \to a^+} \frac{f'(x)}{g'(x)} = A \,.
+    \end{align*}
+    Also suppose $\lim_{x \to a^+} f(x) = 0$ and $\lim_{x \to a^+} g(x) = 0$.
+\end{quote}
+
+\section*{Problem 8.21}
+
+\begin{quote}
+    \itshape
+    Let $p$ and $q$ be any real numbers such that $p < A < q$,
+    and choose an $r$ and $s$ such that $A < r < q$ and $p < s <A$.
+    Let $b \in I$ with $a < b$. Explain why there exists some $c \in (a,b)$
+    such that for all $x$ with $a < x < c$ we have
+    \begin{align*}
+        s < \frac{f'(x)}{g'(x)} < r \,.
+    \end{align*}
+\end{quote}
+
+Let $\epsilon = \min\{ r-A, A-s \}$, which is positive since
+$r > A$ and $A > s$.
+Then there's a $\delta > 0$
+such that if $0 < |x-a| < \delta$, then
+\begin{gather*}
+    \Bigl| \frac{f'(x)}{g'(x)} - A \Bigr| < \epsilon \\
+    -\epsilon < \frac{f'(x)}{g'(x)} - A < \epsilon \\
+    A-\epsilon < \frac{f'(x)}{g'(x)} < A+\epsilon \,,
+\end{gather*}
+which we can rewrite:
+\begin{align*}
+    s = A - (A - s) \leq A-\epsilon < \frac{f'(x)}{g'(x)} < A+\epsilon \leq A + (r-A) = r \,.
+\end{align*}
+Let $\gamma = \min\{ b-a, \delta \}$ and let $c \in (a, a + \gamma)$.
+$\gamma$ is positive, since $b > a$ and $\delta > 0$, so $c$ exists.
+Further, $c \in (a, b)$, since
+\begin{align*}
+    c < a + \gamma \leq a + (b - a) = b \,.
+\end{align*}
+If $x \in (a, c)$, then
+\begin{gather*}
+    a < x < c < a + \gamma \leq a + \delta \\
+    0 < x - a < \delta \\
+    0 < |x-a| < \delta \,,
+\end{gather*}
+and thus
+\begin{align*}
+    s < \frac{f'(x)}{g'(x)} < r \,.
+\end{align*}
+So we've found a $c$ with the desired properties.
+\qedsymbol
+
+\section*{Problem 8.22}
+
+\begin{quote}
+    \itshape
+    Let $x, y \in (a,c)$ with $x < y$. Explain why there exists $t \in (x, y)$
+    such that
+    \begin{align*}
+        s < \frac{f(y) - f(x)}{g(y) - g(x)} = \frac{f'(t)}{g'(t)} < r \,.
+    \end{align*}
+\end{quote}
+
+Since $I$ is an open interval and both $x$ and $y$ are in $I$, neither
+$x$ nor $y$ are the endpoints of $I$, which ensures $f$ and $g$
+are defined and differentiable (and thus continuous) on $[x, y]$.
+So the Cauchy mean value theorem ensures there's a $t \in (x, y)$
+such that
+\begin{align*}
+    \bigl( f(y) - f(x) \bigr) g'(t) &= \bigl( g(y) - g(x) \bigr) f'(t) \,.
+\end{align*}
+If $g(y) - g(x) = 0$, then the mean value theorem implies that
+there's a $p \in (x, y)$ such that
+\begin{align*}
+    (y-x)g'(p) &= 0 \\
+    g'(p) &= 0 \,,
+\end{align*}
+where the last equality is justified since $x \neq y$.
+However, by assumption $g'(p) \neq 0$, so we conclude
+$g(y)-g(x) \neq 0$. Also, $g'(t) \neq 0$. Now we can write
+\begin{align*}
+    \frac{f(y) - f(x)}{g(y) - g(x)} &= \frac{f'(t)}{g'(t)} \,,
+\end{align*}
+as desired. \qedsymbol
+
+\section*{Problem 8.23}
+
+\begin{quote}
+    \itshape
+    Prove that for all $y \in (a,c)$,
+    \begin{align*}
+        p < s \leq \frac{f(y)}{g(y)} \leq r < q \,.
+    \end{align*}
+\end{quote}
+
+Let $y \in (a, c)$, and consider
+\begin{align*}
+    \lim_{x \to a^+} \frac{f(y) - f(x)}{g(y) - g(x)}
+    &=  \frac{\lim_{x \to a^+} \bigl( f(y) - f(x) \bigr)}{\lim_{x \to a^+} \bigl(g(y) - g(x)\bigr)} \\
+    &=  \frac{f(y) - \lim_{x \to a^+} f(x) }{ g(y) - \lim_{x \to a^+} g(x)} \\
+    &= \frac{f(y)}{g(y)} \,.
+\end{align*}
+Let $\alpha \in I$ with $\alpha < a$ and let $\beta \in (y, c)$.
+$\alpha$ exists, since $I$ is an open interval and $a \in I$.
+Since $(\alpha, \beta) \subseteq I$, both $f$ and $g$ are defined on
+$(\alpha, \beta)$.
+The previous problem ensures that for any $x \in (\alpha, \beta)$, we have
+\begin{align*}
+    s < \frac{f(y) - f(x)}{g(y) - g(x)} < r \,.
+\end{align*}
+Lemma 1 now ensures
+\begin{align*}
+    s \leq \liminf_{x \to a^+} \frac{f(y) - f(x)}{g(y) - g(x)}
+    = \lim_{x \to a^+} \frac{f(y) - f(x)}{g(y) - g(x)}
+    = \limsup_{x \to a^+} \frac{f(y) - f(x)}{g(y) - g(x)}
+    \leq r \,.
+\end{align*}
+\qedsymbol
+
+\section*{Problem 8.24}
+
+\begin{quote}
+    \itshape
+    Conclude the proof of the theorem, that is that
+    \begin{align*}
+        \frac{f(x)}{g(x)} \to A \text{ as } x \to a \text{ (from the right). }
+    \end{align*}
+\end{quote}
+
+The previous problem ensures that
+\begin{align*}
+    p < \frac{f(y)}{g(y)} < q \,.
+\end{align*}
+So Lemma 1 ensures
+\begin{align*}
+    p \leq \liminf_{x \to a^+} \frac{f(y)}{g(y)} \leq \limsup_{x \to a^+} \frac{f(y)}{g(y)} \leq q \,.
+\end{align*}
+Since $p$ and $q$ are arbitrary real numbers with $p < A < q$, we conclude that
+\begin{align*}
+    \liminf_{x \to a^+} \frac{f(y)}{g(y)} = A =  \limsup_{x \to a^+} \frac{f(y)}{g(y)} \,.
+\end{align*}
+\qedsymbol
+
+\end{document}
