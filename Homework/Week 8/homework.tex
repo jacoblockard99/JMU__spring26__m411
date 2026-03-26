@@ -196,4 +196,33 @@ Since $p$ and $q$ are arbitrary real numbers with $p < A < q$, we conclude that
 \end{align*}
 \qedsymbol
 
+\section*{Problem 10.2}
+
+\begin{quote}
+    \itshape
+    Consider the sequence of functions $\{ g_n \}$ on the set
+    $[0,1]$ where $g_n(x) = x^n$. (Note that each $g_n$ is continuous
+    on $[0,1]$.)
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Show that $\{g_n\}$ converges pointwise and find the limit
+        function $g$.
+        \item Is $g$ continuous on $[0,1]$?
+    \end{enumerate}
+\end{quote}
+
+\textbf{(a)} Let $x \in [0,1]$.
+If $x = 1$, then the sequence $\{x^n\}$ clearly converges to $1$.
+On the other hand, if $x < 1$, then the sequence
+$\{x^n\}$ converges to $0$. So,
+\begin{align*}
+    g = \lim_{n\to\infty} g_n(x) = \begin{cases}
+        1 \,, \quad x = 1 \,, \\
+        0 \,, \quad x < 1 \,.
+    \end{cases}
+\end{align*}
+We've shown that $\{g_n\}$ converges pointwise to $g$.
+
+\textbf{(b)} Clearly not.
+
 \end{document}
